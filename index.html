@@ -194,7 +194,7 @@
     postsContainer.innerHTML = posts
         .filter(post => !selectedCategory || post.category === selectedCategory)
         .map(post => `
-            <article class="bg-white p-6 shadow-md mb-6 relative">
+            <article class="bg-white p-6 shadow-md mb-6 relative m-1">
                 <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center">
                     <i class="fas fa-share-alt"></i>
                 </button>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posts - RahmanBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        .slider-menu.open {
+            left: 0;
+        }
+        .slider-menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .menu-toggle-hidden {
+            display: none;
+        }
+        .category-btn {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .category-btn:hover {
+            background-color: #e2e8f0;
+        }
+        .posts-list {
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .posts-list a {
+            display: block;
+            color: #1d4ed8;
+            text-decoration: none;
+            margin-bottom: 4px;
+        }
+        .posts-list a:hover {
+            color: #081c54;
+        }
+        .image-container {
+            position: relative;
+            height: 300px; /* Set the desired height */
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensure the image covers the container */
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Optional: add a semi-transparent background */
+        }
+        .image-overlay h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white p-2">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="index.html" class="hover:underline">RahmanBlog</a>
+            </div>
+            <div class="hidden md:flex">
+                <a href="#" class="hover:underline mx-2">About Me</a>
+                <a href="#" class="hover:underline mx-2">Why Astronomy and Coding</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white text-2xl">
+                    &#9776;
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="image-container">
+        <img src="image/cover2.jpg" alt="Cover Image">
+        <div class="image-overlay">
+            <div class="overlay-text">
+                <h1>Welcome to RahmanBlog</h1>
+                <p>Your go-to source for coding insights, tutorials, and tech tips, along with a passion for astronomy.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slider Menu -->
+    <div id="slider-menu" class="slider-menu bg-white p-6 shadow-md">
+        <span id="close-menu" class="close-btn">&times;</span>
+        <h2 class="text-xl font-bold mb-4 text-gray-800">Categories</h2>
+        <div id="categories-container" class="space-y-2">
+            <!-- Categories and posts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container mx-auto mt-8 flex flex-wrap">
+        <!-- Sidebar (Visible only on large screens) -->
+        <aside class="hidden md:block w-1/4 bg-white p-6 shadow-md mb-8">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Categories</h2>
+            <div id="categories-container-sidebar" class="space-y-2">
+                <!-- Categories and posts will be dynamically inserted here -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full md:w-3/4 md:p-6" id="posts-container">
+            <!-- Posts will be dynamically inserted here -->
+        </main>
+    </div>
+    <script src="posts.js"></script>
+
+    <script>
+        // Menu toggle for small devices
+        const menuToggle = document.getElementById('menu-toggle');
+        const sliderMenu = document.getElementById('slider-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sliderMenu.classList.toggle('open');
+            menuToggle.classList.toggle('menu-toggle-hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sliderMenu.classList.remove('open');
+            menuToggle.classList.remove('menu-toggle-hidden');
+        });
+
+        // Simulated blog posts data
+        // const posts = [
+        //     { id: 1, title: 'ডেটা স্ট্রাকচার কী?', author: 'Author 1', date: 'August 23, 2024', summary: 'This is a brief summary of the blog post. Click the title to read the full post.', link: 'fullpost.html?id=1', category: 'Data Structures (Basic)' },
+        //     { id: 2, title: 'Blog Post Title 2', author: 'Author 2', date: 'August 22, 2024', summary: 'This is a brief summary of another blog post. Click the title to read the full post.', link: 'fullpost.html?id=2', category: 'Dynamic Programming' },
+        //     { id: 3, title: 'Blog Post Title 3', author: 'Author 2', date: 'August 22, 2024', summary: 'This is a brief summary of another blog post. Click the title to read the full post.', link: 'fullpost.html?id=3', category: 'Dynamic Programming' }
+        // ];
+
+        // // Simulated categories data
+        // const categories = ['Data Structures (Basic)', 'Data Structures (Advanced)', 'Sorting Algorithms', 'Dynamic Programming', 'Object-Oriented Programming'];
+
+        // Function to render posts
+        function renderPosts(selectedCategory) {
+    const postsContainer = document.getElementById('posts-container');
+    postsContainer.innerHTML = posts
+        .filter(post => !selectedCategory || post.category === selectedCategory)
+        .map(post => `
+            <article class="bg-white p-6 shadow-md mb-6 relative">
+                <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                    <a href="${post.link}" class="hover:underline">${post.title}</a>
+                </h2>
+                <p class="text-gray-600 mb-4">By ${post.author} | ${post.date}</p>
+                <p class="text-gray-800 leading-relaxed mb-4">
+                    ${post.summary}
+                </p>
+                <a href="${post.link}" class="absolute bottom-4  text-blue-500 hover:underline">
+                    Read More
+                </a>
+            </article>
+        `).join('');
+}
+
+
+
+        // Function to render categories with post titles
+        function renderCategories() {
+            const categoriesContainer = document.getElementById('categories-container');
+            const categoriesContainerSidebar = document.getElementById('categories-container-sidebar');
+
+            // Create a map of categories to their posts
+            const categoryToPosts = {};
+            posts.forEach(post => {
+                if (!categoryToPosts[post.category]) {
+                    categoryToPosts[post.category] = [];
+                }
+                categoryToPosts[post.category].push(post);
+            });
+
+            // Render categories and posts in slider menu and sidebar
+            categoriesContainer.innerHTML = Object.keys(categoryToPosts).map(category => `
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">
+                        ${category} (${categoryToPosts[category].length})
+                    </h3>
+                    <div class="posts-list">
+                        ${categoryToPosts[category].map(post => `
+                            <a href="${post.link}">${post.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            categoriesContainerSidebar.innerHTML = Object.keys(categoryToPosts).map(category => `
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">
+                        ${category} (${categoryToPosts[category].length})
+                    </h3>
+                    <div class="posts-list">
+                        ${categoryToPosts[category].map(post => `
+                            <a href="${post.link}">${post.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter posts by selected category
+        function filterPostsByCategory(category) {
+            renderPosts(category);
+        }
+
+        // Initial render
+        renderCategories();
+        renderPosts();
+    </script>
+</body>
+</html>

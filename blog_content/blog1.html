@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Structures Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+
+      color: #1f2937;
+  
+    }
+
+    h1, h2 {
+      color: #1f2937;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">What is a Data Structure?</h1>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    A data structure is a specialized format for organizing, processing, retrieving, and storing data. In computer science, efficient data structures are key to designing efficient algorithms. Different kinds of data structures are suited to different kinds of applications, and some are highly specialized to specific tasks.
+</p>
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Types of Data Structures</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Data structures can be broadly classified into two categories:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Linear Data Structures:</strong> These are data structures where data elements are arranged sequentially or linearly, where each element is attached to its previous and next adjacent elements. Examples include arrays, linked lists, stacks, and queues.</li>
+    <li><strong>Non-linear Data Structures:</strong> In these data structures, data elements are not arranged sequentially. Examples include trees and graphs.</li>
+</ul>
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Why are Data Structures Important?</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Data structures are crucial because they provide the means to manage large amounts of data efficiently for uses such as large databases and internet indexing services. Typically, efficient data structures are key to designing efficient algorithms. This is because the design of an algorithm is often tightly intertwined with the design of the data structure used to implement it.
+</p>
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Common Data Structures</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Some commonly used data structures include:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Array:</strong> A collection of elements identified by index or key.</li>
+    <li><strong>Linked List:</strong> A linear collection of data elements where the linear order is not given by their physical placement in memory.</li>
+    <li><strong>Stack:</strong> A collection of elements that are accessible in a last in, first out (LIFO) order.</li>
+    <li><strong>Queue:</strong> A collection of elements that are accessible in a first in, first out (FIFO) order.</li>
+    <li><strong>Tree:</strong> A hierarchical data structure consisting of nodes, with a root node and child nodes, forming a parent-child relationship.</li>
+    <li><strong>Graph:</strong> A collection of nodes where some pairs of nodes are connected by edges, representing relationships between them.</li>
+</ul>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Array in Python</h3>
+  <pre><code># Python code to create an array
+array = [1, 2, 3, 4, 5]
+print("Array:", array)
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Stack in Python</h3>
+  <pre><code># Python code to implement a stack
+class Stack:
+    def __init__(self):
+        self.stack = []
+    
+    def push(self, value):
+        self.stack.append(value)
+    
+    def pop(self):
+        if not self.is_empty():
+            return self.stack.pop()
+        return None
+    
+    def is_empty(self):
+        return len(self.stack) == 0
+
+stack = Stack()
+stack.push(1)
+stack.push(2)
+print("Stack after pushes:", stack.stack)
+stack.pop()
+print("Stack after pop:", stack.stack)
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Binary Tree in Python</h3>
+  <pre><code># Python code to create a binary tree node
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+
+print("Root node value:", root.value)
+print("Left child value:", root.left.value)
+print("Right child value:", root.right.value)
+  </code></pre>
+</div>
+
+<p style="font-size: 18px;">
+    Understanding and implementing data structures correctly is crucial for developing efficient software and systems.
+</p>
+
+</body>
+</html>

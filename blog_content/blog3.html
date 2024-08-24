@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Big O Notation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+    }
+
+    h1, h2 {
+      color: #1f2937;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">Understanding Big O Notation</h1>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Big O notation is a mathematical concept used in computer science to describe the performance or complexity of an algorithm. It provides an upper bound on the time or space complexity of an algorithm in relation to the size of the input. In this post, we will explore various Big O notations with examples in different programming languages.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Common Big O Notations</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Big O notation helps describe the efficiency of an algorithm. Here are some common notations:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>O(1) - Constant Time</strong>: The runtime or space requirement of the algorithm does not change with the input size.</li>
+    <li><strong>O(log n) - Logarithmic Time</strong>: The runtime or space requirement grows logarithmically with the input size.</li>
+    <li><strong>O(n) - Linear Time</strong>: The runtime or space requirement grows linearly with the input size.</li>
+    <li><strong>O(n log n) - Linearithmic Time</strong>: The runtime or space requirement grows as a combination of linear and logarithmic factors.</li>
+    <li><strong>O(n^2) - Quadratic Time</strong>: The runtime or space requirement grows quadratically with the input size.</li>
+    <li><strong>O(2^n) - Exponential Time</strong>: The runtime or space requirement grows exponentially with the input size.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Examples and Code</h2>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Constant Time - O(1)</h3>
+  <pre><code># Python code to demonstrate O(1) time complexity
+def get_element(arr, index):
+    return arr[index]
+
+# Usage
+arr = [1, 2, 3, 4, 5]
+print(get_element(arr, 2))  # Output: 3
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Logarithmic Time - O(log n)</h3>
+  <pre><code># Python code for O(log n) time complexity
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# Usage
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(binary_search(arr, 5))  # Output: 4
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Linear Time - O(n)</h3>
+  <pre><code># Python code for O(n) time complexity
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+# Usage
+arr = [1, 2, 3, 4, 5]
+print(linear_search(arr, 3))  # Output: 2
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Linearithmic Time - O(n log n)</h3>
+  <pre><code># Python code for O(n log n) time complexity
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+# Usage
+arr = [3, 1, 4, 1, 5, 9, 2]
+merge_sort(arr)
+print(arr)  # Output: [1, 1, 2, 3, 4, 5, 9]
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Quadratic Time - O(n^2)</h3>
+  <pre><code># Python code for O(n^2) time complexity
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# Usage
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(arr)
+print(arr)  # Output: [11, 12, 22, 25, 34, 64, 90]
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Exponential Time - O(2^n)</h3>
+  <pre><code># Python code for O(2^n) time complexity
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Usage
+print(fibonacci(5))  # Output: 5
+  </code></pre>
+</div>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Why Big O Notation Matters</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Understanding Big O notation is essential for evaluating and optimizing algorithms. It helps developers choose the most efficient algorithm for a given problem and anticipate how an algorithm will scale with increasing input sizes. By mastering Big O notation, you can improve the performance and scalability of your code.
+</p>
+
+<p style="font-size: 18px;">
+    Practice analyzing algorithms with different Big O complexities to deepen your understanding and enhance your programming skills.
+</p>
+
+</body>
+</html>

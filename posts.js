@@ -9,8 +9,9 @@ const posts = [
         date: 'August 23, 2024', 
         link: 'fullpost.html?id=1', 
         category: 'Data Structures (Basic)', 
-        contentPath: 'blog_content/blog1.html',
-        summary: 'An overview of what data structures are, their importance, and basic types used in computer science.'
+        contentPath: 'blog_content/blog1/blog1.html',
+        summary: 'An overview of what data structures are, their importance, and basic types used in computer science.',
+        image: 'blog_content/blog1/blog1_image.jpg'
     },
     { 
         id: 2, 

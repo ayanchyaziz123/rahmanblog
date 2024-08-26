@@ -231,7 +231,7 @@
             postsContainer.innerHTML = paginatedPosts.map(post => `
                 <article class="bg-white p-6 shadow-md mb-6 relative m-1 flex flex-col md:flex-row">
                     <div class="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
-                        <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded" style="max-height: 140px;">
                     </div>
                     <div class="w-full md:w-3/4">
                         <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center" onclick="sharePost('${post.title}', '${post.link}')">

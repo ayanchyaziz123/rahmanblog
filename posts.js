@@ -131,8 +131,69 @@ const posts = [
         contentPath: 'blog_content/blog12/blog12.html',
         summary: 'A deep dive into Tries, their structure, operations, and applications in string management.',
         image: 'blog_content/blog12/blog12_image.png'
+    },
+    { 
+        id: 13, 
+        title: 'What is Object-Oriented Programming?', 
+        author: 'Rahman', 
+        date: 'August 26, 2024', 
+        link: 'fullpost.html?id=13', 
+        category: 'Object-Oriented Programming', 
+        contentPath: 'blog_content/blog13/blog13.html',
+        summary: 'An introduction to object-oriented programming, including its core principles and benefits.',
+        image: 'blog_content/blog13/blog13_image.avif'
+    },
+    { 
+        id: 14, 
+        title: 'Encapsulation', 
+        author: 'Rahman', 
+        date: 'August 27, 2024', 
+        link: 'fullpost.html?id=14', 
+        category: 'Object-Oriented Programming', 
+        contentPath: 'blog_content/blog14/blog14.html',
+        summary: 'Explaining encapsulation, its importance in OOP, and how it helps in data hiding and abstraction.',
+        image: 'blog_content/blog14/blog14_image.jpg'
+    },
+    { 
+        id: 15, 
+        title: 'Inheritance', 
+        author: 'Rahman', 
+        date: 'August 27, 2024', 
+        link: 'fullpost.html?id=15', 
+        category: 'Object-Oriented Programming', 
+        contentPath: 'blog_content/blog15/blog15.html',
+        summary: 'A detailed look at inheritance, how it promotes code reuse, and examples of inheritance in different programming languages.',
+        image: 'blog_content/blog15/blog15_image.jpg'
+    },
+    { 
+        id: 16, 
+        title: 'Polymorphism', 
+        author: 'Rahman', 
+        date: 'August 28, 2024', 
+        link: 'fullpost.html?id=16', 
+        category: 'Object-Oriented Programming', 
+        contentPath: 'blog_content/blog16/blog16.html',
+        summary: 'Understanding polymorphism, its types, and how it enhances flexibility and functionality in OOP.',
+        image: 'blog_content/blog16/blog16_image.png'
+    },
+    { 
+        id: 17, 
+        title: 'Abstraction', 
+        author: 'Rahman', 
+        date: 'August 28, 2024', 
+        link: 'fullpost.html?id=17', 
+        category: 'Object-Oriented Programming', 
+        contentPath: 'blog_content/blog17/blog17.html',
+        summary: 'A comprehensive guide to abstraction in OOP, its benefits, and how to implement it effectively.',
+        image: 'blog_content/blog17/blog17_image.webp'
     }
 ];
 
 // Simulated categories data
-const categories = ['Data Structures (Basic)', 'Data Structures (Advanced)', 'Sorting Algorithms', 'Dynamic Programming', 'Object-Oriented Programming'];
+const categories = [
+    'Data Structures (Basic)', 
+    'Data Structures (Advanced)', 
+    'Sorting Algorithms', 
+    'Dynamic Programming', 
+    'Object-Oriented Programming'
+];

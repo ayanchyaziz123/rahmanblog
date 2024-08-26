@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Encapsulation in Object-Oriented Programming</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2 {
+      color: #1f2937;
+    }
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Understanding Encapsulation in Object-Oriented Programming</h1>
+
+  <h2>What is Encapsulation?</h2>
+  <p>
+    Encapsulation is a fundamental concept in object-oriented programming (OOP) that refers to the bundling of data (attributes) and methods (functions) that operate on the data into a single unit, called a class. This concept helps in hiding the internal state of an object from the outside world and only exposes a controlled interface for interaction.
+  </p>
+
+  <h2>Why is Encapsulation Important?</h2>
+  <p>
+    Encapsulation is crucial for several reasons:
+    <ul>
+      <li><strong>Data Hiding:</strong> It restricts direct access to some of an object's components, which can prevent unintended interference and misuse of the data.</li>
+      <li><strong>Improved Maintenance:</strong> By keeping the internal implementation hidden, it becomes easier to modify and maintain the code without affecting other parts of the application.</li>
+      <li><strong>Increased Flexibility:</strong> Changes to the internal workings of a class can be made without changing the way other parts of the program interact with it, thus ensuring better flexibility and robustness.</li>
+    </ul>
+  </p>
+
+  <h2>How Encapsulation Works</h2>
+  <p>
+    In practice, encapsulation is achieved through the use of private and public access modifiers. Private attributes and methods are only accessible within the class itself, while public attributes and methods can be accessed from outside the class. This is typically managed through getter and setter methods.
+  </p>
+
+  <div class="code-container">
+    <h3>Example: Encapsulation in Python</h3>
+    <pre><code># Python code to demonstrate encapsulation
+
+class Person:
+    def __init__(self, name, age):
+        self.__name = name  # Private attribute
+        self.__age = age    # Private attribute
+
+    # Getter method for name
+    def get_name(self):
+        return self.__name
+
+    # Setter method for name
+    def set_name(self, name):
+        self.__name = name
+
+    # Getter method for age
+    def get_age(self):
+        return self.__age
+
+    # Setter method for age
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            print("Age must be positive!")
+
+# Usage example
+person = Person("Alice", 30)
+print("Name:", person.get_name())  # Outputs: Alice
+print("Age:", person.get_age())    # Outputs: 30
+
+person.set_name("Bob")
+person.set_age(35)
+print("Updated Name:", person.get_name())  # Outputs: Bob
+print("Updated Age:", person.get_age())    # Outputs: 35
+    </code></pre>
+  </div>
+
+  <h2>Conclusion</h2>
+  <p>
+    Encapsulation is a key principle of object-oriented programming that helps in creating more secure, flexible, and maintainable code. By controlling how data and methods are accessed and modified, encapsulation ensures that the internal workings of an object are hidden and only exposed through a well-defined interface.
+  </p>
+</div>
+
+</body>
+</html>

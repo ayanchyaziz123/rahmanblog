@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Polymorphism in Object-Oriented Programming</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+   
+    h1, h2 {
+      color: #1f2937;
+    }
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Understanding Polymorphism in Object-Oriented Programming</h1>
+
+  <h2>What is Polymorphism?</h2>
+  <p>
+    Polymorphism is a core concept in object-oriented programming (OOP) that allows objects of different classes to be treated as objects of a common superclass. The term polymorphism means "many shapes" and it enables a single interface to be used for different data types or objects.
+  </p>
+
+  <h2>Types of Polymorphism</h2>
+  <p>
+    There are two main types of polymorphism:
+    <ul>
+      <li><strong>Compile-time Polymorphism (Static Polymorphism):</strong> This type is achieved through method overloading and operator overloading. The method to be invoked is determined at compile time.</li>
+      <li><strong>Runtime Polymorphism (Dynamic Polymorphism):</strong> This type is achieved through method overriding. The method to be invoked is determined at runtime, which is usually implemented using inheritance and virtual functions.</li>
+    </ul>
+  </p>
+
+  <h2>Why is Polymorphism Important?</h2>
+  <p>
+    Polymorphism is important for several reasons:
+    <ul>
+      <li><strong>Code Reusability:</strong> It allows code to be written in a more generic manner, thus reducing redundancy and increasing reusability.</li>
+      <li><strong>Flexibility:</strong> It enables the same function or method to behave differently based on the object or data type, making the system more flexible and scalable.</li>
+      <li><strong>Maintainability:</strong> Polymorphic code can be easier to maintain because changes can be made in one place, and the changes will be reflected across the application.</li>
+    </ul>
+  </p>
+
+  <h2>Examples of Polymorphism</h2>
+
+  <div class="code-container">
+    <h3>Example: Compile-time Polymorphism in Python</h3>
+    <pre><code># Python code to demonstrate compile-time polymorphism using method overloading
+
+class MathOperations:
+    def add(self, a, b):
+        return a + b
+
+    def add(self, a, b, c):
+        return a + b + c
+
+math_ops = MathOperations()
+print("Sum of two numbers:", math_ops.add(5, 10))  # Outputs: Sum of two numbers: 15
+print("Sum of three numbers:", math_ops.add(5, 10, 15))  # Outputs: Sum of three numbers: 30
+    </code></pre>
+  </div>
+
+  <div class="code-container">
+    <h3>Example: Runtime Polymorphism in Python</h3>
+    <pre><code># Python code to demonstrate runtime polymorphism using method overriding
+
+class Animal:
+    def make_sound(self):
+        raise NotImplementedError("Subclasses must implement this method")
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+def print_animal_sound(animal):
+    print(animal.make_sound())
+
+dog = Dog()
+cat = Cat()
+
+print_animal_sound(dog)  # Outputs: Woof!
+print_animal_sound(cat)  # Outputs: Meow!
+    </code></pre>
+  </div>
+
+  <h2>Conclusion</h2>
+  <p>
+    Polymorphism is a powerful concept in object-oriented programming that enhances flexibility, reusability, and maintainability of code. By allowing different objects to be treated as instances of a common superclass, polymorphism enables developers to write more generic and adaptable code, which is essential for building robust and scalable applications.
+  </p>
+</div>
+
+</body>
+</html>

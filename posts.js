@@ -86,7 +86,7 @@ const posts = [
         category: 'Data Structures (Advanced)', 
         contentPath: 'blog_content/blog8/blog8.html',
         summary: 'Understanding graphs, their representations (adjacency matrix, adjacency list), and common algorithms (BFS, DFS).',
-        image: 'blog_content/blog8/blog8_image.webp'
+        image: 'blog_content/blog8/blog8_image.jpg'
     },
     { 
         id: 9, 
@@ -97,7 +97,7 @@ const posts = [
         category: 'Data Structures (Advanced)', 
         contentPath: 'blog_content/blog9/blog9.html',
         summary: 'An introduction to binary trees, their properties, and various types (full, complete, balanced, etc.).',
-        image: 'blog_content/blog9/blog9_image.webp'
+        image: 'blog_content/blog9/blog9_image.png'
     },
     { 
         id: 10, 
@@ -108,7 +108,7 @@ const posts = [
         category: 'Data Structures (Advanced)', 
         contentPath: 'blog_content/blog10/blog10.html',
         summary: 'Explaining binary search trees, their properties, and operations (insertion, deletion, searching).',
-        image: 'blog_content/blog10/blog10_image.webp'
+        image: 'blog_content/blog10/blog10_image.jpeg'
     },
     { 
         id: 11, 
@@ -119,7 +119,7 @@ const posts = [
         category: 'Data Structures (Advanced)', 
         contentPath: 'blog_content/blog11/blog11.html',
         summary: 'Understanding AVL trees, their balance property, and how rotations are used to maintain balance.',
-        image: 'blog_content/blog11/blog11_image.webp'
+        image: 'blog_content/blog11/blog11_image.png'
     },
     { 
         id: 12, 
@@ -130,7 +130,7 @@ const posts = [
         category: 'Data Structures (Advanced)', 
         contentPath: 'blog_content/blog12/blog12.html',
         summary: 'A deep dive into Tries, their structure, operations, and applications in string management.',
-        image: 'blog_content/blog12/blog12_image.webp'
+        image: 'blog_content/blog12/blog12_image.png'
     }
 ];
 

@@ -1,5 +1,3 @@
-// posts.js
-
 // Simulated data
 const posts = [
     { 
@@ -56,6 +54,83 @@ const posts = [
         contentPath: 'blog_content/blog5/blog5.html',
         summary: 'Exploring the stack data structure, its operations, and real-world applications.',
         image: 'blog_content/blog5/blog5_image.webp'
+    },
+    { 
+        id: 6, 
+        title: 'Queue', 
+        author: 'Rahman', 
+        date: 'August 24, 2024', 
+        link: 'fullpost.html?id=6', 
+        category: 'Data Structures (Basic)', 
+        contentPath: 'blog_content/blog6/blog6.html',
+        summary: 'Understanding the queue data structure, its FIFO principle, and common use cases.',
+        image: 'blog_content/blog6/blog6_image.webp'
+    },
+    { 
+        id: 7, 
+        title: 'Linked List', 
+        author: 'Rahman', 
+        date: 'August 24, 2024', 
+        link: 'fullpost.html?id=7', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog7/blog7.html',
+        summary: 'Exploring linked lists, their types (singly, doubly, and circular), and their advantages over arrays.',
+        image: 'blog_content/blog7/blog7_image.webp'
+    },
+    { 
+        id: 8, 
+        title: 'Graph', 
+        author: 'Rahman', 
+        date: 'August 25, 2024', 
+        link: 'fullpost.html?id=8', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog8/blog8.html',
+        summary: 'Understanding graphs, their representations (adjacency matrix, adjacency list), and common algorithms (BFS, DFS).',
+        image: 'blog_content/blog8/blog8_image.webp'
+    },
+    { 
+        id: 9, 
+        title: 'Binary Tree', 
+        author: 'Rahman', 
+        date: 'August 25, 2024', 
+        link: 'fullpost.html?id=9', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog9/blog9.html',
+        summary: 'An introduction to binary trees, their properties, and various types (full, complete, balanced, etc.).',
+        image: 'blog_content/blog9/blog9_image.webp'
+    },
+    { 
+        id: 10, 
+        title: 'Binary Search Tree', 
+        author: 'Rahman', 
+        date: 'August 25, 2024', 
+        link: 'fullpost.html?id=10', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog10/blog10.html',
+        summary: 'Explaining binary search trees, their properties, and operations (insertion, deletion, searching).',
+        image: 'blog_content/blog10/blog10_image.webp'
+    },
+    { 
+        id: 11, 
+        title: 'AVL Tree', 
+        author: 'Rahman', 
+        date: 'August 26, 2024', 
+        link: 'fullpost.html?id=11', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog11/blog11.html',
+        summary: 'Understanding AVL trees, their balance property, and how rotations are used to maintain balance.',
+        image: 'blog_content/blog11/blog11_image.webp'
+    },
+    { 
+        id: 12, 
+        title: 'Trie', 
+        author: 'Rahman', 
+        date: 'August 26, 2024', 
+        link: 'fullpost.html?id=12', 
+        category: 'Data Structures (Advanced)', 
+        contentPath: 'blog_content/blog12/blog12.html',
+        summary: 'A deep dive into Tries, their structure, operations, and applications in string management.',
+        image: 'blog_content/blog12/blog12_image.webp'
     }
 ];
 

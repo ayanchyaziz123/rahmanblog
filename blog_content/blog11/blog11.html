@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding AVL Trees</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    h1, h2 {
+      color: #1f2937;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">Understanding AVL Trees</h1>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    AVL Trees are a type of self-balancing binary search tree named after their inventors, Adelson-Velsky and Landis. They maintain balance through rotations, ensuring that the height difference between the left and right subtrees of any node is at most one. This balance guarantees O(log n) time complexity for search, insertion, and deletion operations. In this post, we will explore AVL Trees, their balancing mechanisms, and provide examples in various programming languages.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">What is an AVL Tree?</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    An AVL Tree is a binary search tree with the additional property that the heights of the two child subtrees of any node differ by at most one. This property is known as the AVL property. To maintain this balance, AVL Trees perform rotations during insertions and deletions. The key operations are:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Left Rotation:</strong> Applied when a node becomes unbalanced due to a right-heavy subtree.</li>
+    <li><strong>Right Rotation:</strong> Applied when a node becomes unbalanced due to a left-heavy subtree.</li>
+    <li><strong>Left-Right Rotation:</strong> A combination of left and right rotations, used when a node is unbalanced due to a right-heavy left child.</li>
+    <li><strong>Right-Left Rotation:</strong> A combination of right and left rotations, used when a node is unbalanced due to a left-heavy right child.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Balancing an AVL Tree</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The AVL Tree maintains its balance by ensuring that the height of any node's left and right subtrees differs by no more than one. When an insertion or deletion operation causes this balance factor to be violated, rotations are performed to restore balance. The balance factor of a node is defined as the height difference between its left and right subtrees.
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Balance Factor:</strong> For a given node, it's the difference between the height of the left subtree and the height of the right subtree.</li>
+    <li><strong>Height:</strong> The height of an AVL Tree is O(log n) due to its balanced nature, ensuring efficient operations.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Examples and Code</h2>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: AVL Tree in Python</h3>
+  <pre><code># Python code to demonstrate an AVL Tree
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.value = key
+        self.height = 1
+
+class AVLTree:
+    def insert(self, root, key):
+        if not root:
+            return Node(key)
+        elif key < root.value:
+            root.left = self.insert(root.left, key)
+        else:
+            root.right = self.insert(root.right, key)
+
+        root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
+
+        balance = self.getBalance(root)
+
+        # Left Heavy
+        if balance > 1 and key < root.left.value:
+            return self.rightRotate(root)
+
+        # Right Heavy
+        if balance < -1 and key > root.right.value:
+            return self.leftRotate(root)
+
+        # Left Right Heavy
+        if balance > 1 and key > root.left.value:
+            root.left = self.leftRotate(root.left)
+            return self.rightRotate(root)
+
+        # Right Left Heavy
+        if balance < -1 and key < root.right.value:
+            root.right = self.rightRotate(root.right)
+            return self.leftRotate(root)
+
+        return root
+
+    def leftRotate(self, z):
+        y = z.right
+        T2 = y.left
+        y.left = z
+        z.right = T2
+        z.height = 1 + max(self.getHeight(z.left), self.getHeight(z.right))
+        y.height = 1 + max(self.getHeight(y.left), self.getHeight(y.right))
+        return y
+
+    def rightRotate(self, z):
+        y = z.left
+        T3 = y.right
+        y.right = z
+        z.left = T3
+        z.height = 1 + max(self.getHeight(z.left), self.getHeight(z.right))
+        y.height = 1 + max(self.getHeight(y.left), self.getHeight(y.right))
+        return y
+
+    def getHeight(self, root):
+        if not root:
+            return 0
+        return root.height
+
+    def getBalance(self, root):
+        if not root:
+            return 0
+        return self.getHeight(root.left) - self.getHeight(root.right)
+
+    def inorder(self, root):
+        if root:
+            self.inorder(root.left)
+            print(root.value, end=' ')
+            self.inorder(root.right)
+
+# Creating an AVL Tree and inserting nodes
+avl_tree = AVLTree()
+root = None
+keys = [10, 20, 30, 15, 25]
+for key in keys:
+    root = avl_tree.insert(root, key)
+
+print("Inorder traversal of the AVL tree:")
+avl_tree.inorder(root)
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: AVL Tree in JavaScript</h3>
+  <pre><code>// JavaScript code to demonstrate an AVL Tree
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+        this.height = 1;
+    }
+}
+
+class AVLTree {
+    insert(root, value) {
+        if (!root) {
+            return new Node(value);
+        } 
+        if (value < root.value) {
+            root.left = this.insert(root.left, value);
+        } else {
+            root.right = this.insert(root.right, value);
+        }
+
+        root.height = 1 + Math.max(this.getHeight(root.left), this.getHeight(root.right));
+
+        const balance = this.getBalance(root);
+
+        // Left Heavy
+        if (balance > 1 && value < root.left.value) {
+            return this.rightRotate(root);
+        }
+
+        // Right Heavy
+        if (balance < -1 && value > root.right.value) {
+            return this.leftRotate(root);
+        }
+
+        // Left Right Heavy
+        if (balance > 1 && value > root.left.value) {
+            root.left = this.leftRotate(root.left);
+            return this.rightRotate(root);
+        }
+
+        // Right Left Heavy
+        if (balance < -1 && value < root.right.value) {
+            root.right = this.rightRotate(root.right);
+            return this.leftRotate(root);
+        }
+
+        return root;
+    }
+
+    leftRotate(z) {
+        const y = z.right;
+        const T2 = y.left;
+        y.left = z;
+        z.right = T2;
+        z.height = 1 + Math.max(this.getHeight(z.left), this.getHeight(z.right));
+        y.height = 1 + Math.max(this.getHeight(y.left), this.getHeight(y.right));
+        return y;
+    }
+
+    rightRotate(z) {
+        const y = z.left;
+        const T3 = y.right;
+        y.right = z;
+        z.left = T3;
+        z.height = 1 + Math.max(this.getHeight(z.left), this.getHeight(z.right));
+        y.height = 1 + Math.max(this.getHeight(y.left), this.getHeight(y.right));
+        return y;
+    }
+
+    getHeight(root) {
+        if (!root) {
+            return 0;
+        }
+        return root.height;
+    }
+
+    getBalance(root) {
+        if (!root) {
+            return 0;
+        }
+        return this.getHeight(root.left) - this.getHeight(root.right);
+    }
+
+    inorder(root) {
+        if (root) {
+            this.inorder(root.left);
+            console.log(root.value);
+            this.inorder(root.right);
+        }
+    }
+}
+
+// Creating an AVL Tree and inserting nodes
+const avlTree = new AVLTree();
+let root = null;
+const keys = [10, 20, 30, 15, 25];
+keys.forEach(key => {
+    root = avlTree.insert(root, key);
+});
+
+console.log("Inorder traversal of the AVL tree:");
+avlTree.inorder(root);
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: AVL Tree in Java</h3>
+  <pre><code>// Java code to demonstrate an AVL Tree
+import java.util.*;
+
+class Node {
+    int value;
+    Node left, right;
+    int height;
+
+    Node(int value) {
+        this.value = value;
+        this.height = 1;
+    }
+}
+
+class AVLTree {
+    Node root;
+
+    Node insert(Node node, int value) {
+        if (node == null) {
+            return new Node(value);
+        }
+
+        if (value < node.value) {
+            node.left = insert(node.left, value);
+        } else {
+            node.right = insert(node.right, value);
+        }
+
+        node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right));
+
+        int balance = getBalance(node);
+
+        if (balance > 1 && value < node.left.value) {
+            return rightRotate(node);
+        }
+
+        if (balance < -1 && value > node.right.value) {
+            return leftRotate(node);
+        }
+
+        if (balance > 1 && value > node.left.value) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        if (balance < -1 && value < node.right.value) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
+
+        return node;
+    }
+
+    Node leftRotate(Node z) {
+        Node y = z.right;
+        Node T2 = y.left;
+        y.left = z;
+        z.right = T2;
+        z.height = 1 + Math.max(getHeight(z.left), getHeight(z.right));
+        y.height = 1 + Math.max(getHeight(y.left), getHeight(y.right));
+        return y;
+    }
+
+    Node rightRotate(Node z) {
+        Node y = z.left;
+        Node T3 = y.right;
+        y.right = z;
+        z.left = T3;
+        z.height = 1 + Math.max(getHeight(z.left), getHeight(z.right));
+        y.height = 1 + Math.max(getHeight(y.left), getHeight(y.right));
+        return y;
+    }
+
+    int getHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.height;
+    }
+
+    int getBalance(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return getHeight(node.left) - getHeight(node.right);
+    }
+
+    void inorder(Node root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.value + " ");
+            inorder(root.right);
+        }
+    }
+}
+
+// Main class to test AVL Tree
+public class AVLTreeExample {
+    public static void main(String[] args) {
+        AVLTree avlTree = new AVLTree();
+        Node root = null;
+        int[] keys = {10, 20, 30, 15, 25};
+
+        for (int key : keys) {
+            root = avlTree.insert(root, key);
+        }
+
+        System.out.println("Inorder traversal of the AVL tree:");
+        avlTree.inorder(root);
+    }
+}
+  </code></pre>
+</div>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Common Operations on AVL Trees</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Here are some common operations performed on AVL Trees:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Insertion:</strong> Adds a new node while maintaining the AVL property through rotations.</li>
+    <li><strong>Deletion:</strong> Removes a node and performs necessary rotations to restore balance.</li>
+    <li><strong>Search:</strong> Finds a node with a specified value in O(log n) time complexity.</li>
+    <li><strong>Traversal:</strong> Visits all nodes in a specified order (inorder, preorder, postorder).</li>
+    <li><strong>Balance Check:</strong> Ensures the tree remains balanced by checking the balance factor.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Why AVL Trees Matter</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    AVL Trees are important because they provide a balanced binary search tree structure that ensures O(log n) time complexity for insertion, deletion, and search operations. This balance improves performance for dynamic sets of data and is used in various applications such as databases, file systems, and memory management. AVL Trees offer efficient data retrieval and manipulation while maintaining a balanced structure to prevent performance degradation.
+</p>
+
+<p style="font-size: 18px;">
+    Understanding AVL Trees is crucial for efficient data structure design and algorithm optimization, making them a key concept in computer science and software engineering.
+</p>
+
+</body>
+</html>

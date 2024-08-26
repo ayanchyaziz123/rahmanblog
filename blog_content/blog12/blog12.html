@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Tries</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    h1, h2 {
+      color: #1f2937;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">Understanding Tries</h1>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    A Trie, also known as a prefix tree, is a specialized tree data structure that is used to store a dynamic set of strings, where the keys are usually strings. It is particularly useful for tasks like autocomplete, spell checking, and dictionary implementations. This blog post will explain the concept of tries, their operations, and provide examples in multiple programming languages.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">What is a Trie?</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    A Trie is a tree-like data structure that stores strings in a way that allows for efficient retrieval of keys. Each node in the Trie represents a single character of a string. The root node represents an empty string, and each path from the root to a leaf node represents a string stored in the Trie. The key features of a Trie include:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Prefix-Based Storage:</strong> Strings are stored based on their prefixes, which helps in efficiently finding strings with common prefixes.</li>
+    <li><strong>Node Structure:</strong> Each node has multiple children, one for each possible character in the string. This structure enables fast lookups and insertions.</li>
+    <li><strong>Efficiency:</strong> Tries provide efficient searching, insertion, and prefix-based operations with a time complexity of O(m), where m is the length of the string.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Trie Operations</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Tries support several key operations, which are implemented efficiently due to their tree structure. Here are some common operations:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Insertion:</strong> Adds a string to the Trie by creating nodes for each character and linking them appropriately.</li>
+    <li><strong>Search:</strong> Checks whether a given string is present in the Trie by traversing nodes based on the string's characters.</li>
+    <li><strong>Prefix Search:</strong> Finds all strings in the Trie that start with a given prefix by traversing to the end of the prefix and then exploring all descendant nodes.</li>
+    <li><strong>Deletion:</strong> Removes a string from the Trie, which may involve deleting nodes if they are no longer part of any other strings.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Examples and Code</h2>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Trie in Python</h3>
+  <pre><code># Python code to demonstrate a Trie
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+
+    def startsWith(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+
+# Creating a Trie and inserting words
+trie = Trie()
+words = ["apple", "app", "banana", "bat"]
+for word in words:
+    trie.insert(word)
+
+# Searching for words and prefixes
+print("Searching 'app':", trie.search('app'))       # True
+print("Searching 'apple':", trie.search('apple'))   # True
+print("Searching 'ban':", trie.startsWith('ban'))   # True
+print("Searching 'batman':", trie.search('batman')) # False
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Trie in JavaScript</h3>
+  <pre><code>// JavaScript code to demonstrate a Trie
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+
+    insert(word) {
+        let node = this.root;
+        for (let char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+        }
+        node.isEndOfWord = true;
+    }
+
+    search(word) {
+        let node = this.root;
+        for (let char of word) {
+            if (!node.children[char]) {
+                return false;
+            }
+            node = node.children[char];
+        }
+        return node.isEndOfWord;
+    }
+
+    startsWith(prefix) {
+        let node = this.root;
+        for (let char of prefix) {
+            if (!node.children[char]) {
+                return false;
+            }
+            node = node.children[char];
+        }
+        return true;
+    }
+}
+
+// Creating a Trie and inserting words
+const trie = new Trie();
+const words = ["apple", "app", "banana", "bat"];
+words.forEach(word => trie.insert(word));
+
+// Searching for words and prefixes
+console.log("Searching 'app':", trie.search('app'));       // True
+console.log("Searching 'apple':", trie.search('apple'));   // True
+console.log("Searching 'ban':", trie.startsWith('ban'));   // True
+console.log("Searching 'batman':", trie.search('batman')); // False
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Trie in Java</h3>
+  <pre><code>// Java code to demonstrate a Trie
+import java.util.HashMap;
+import java.util.Map;
+
+class TrieNode {
+    Map<Character, TrieNode> children;
+    boolean isEndOfWord;
+
+    TrieNode() {
+        children = new HashMap<>();
+        isEndOfWord = false;
+    }
+}
+
+class Trie {
+    private final TrieNode root;
+
+    Trie() {
+        root = new TrieNode();
+    }
+
+    void insert(String word) {
+        TrieNode node = root;
+        for (char ch : word.toCharArray()) {
+            node = node.children.computeIfAbsent(ch, c -> new TrieNode());
+        }
+        node.isEndOfWord = true;
+    }
+
+    boolean search(String word) {
+        TrieNode node = root;
+        for (char ch : word.toCharArray()) {
+            node = node.children.get(ch);
+            if (node == null) {
+                return false;
+            }
+        }
+        return node.isEndOfWord;
+    }
+
+    boolean startsWith(String prefix) {
+        TrieNode node = root;
+        for (char ch : prefix.toCharArray()) {
+            node = node.children.get(ch);
+            if (node == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+// Main class to test Trie
+public class TrieExample {
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        String[] words = {"apple", "app", "banana", "bat"};
+
+        for (String word : words) {
+            trie.insert(word);
+        }
+
+        System.out.println("Searching 'app': " + trie.search("app"));       // True
+        System.out.println("Searching 'apple': " + trie.search("apple"));   // True
+        System.out.println("Searching 'ban': " + trie.startsWith("ban"));   // True
+        System.out.println("Searching 'batman': " + trie.search("batman")); // False
+    }
+}
+  </code></pre>
+</div>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Applications of Tries</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Tries are widely used in various applications due to their efficient prefix-based operations. Some common applications include:
+</p>
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Autocomplete:</strong> Tries are used to suggest completions for a given prefix based on stored words.</li>
+    <li><strong>Spell Checking:</strong> Tries help in detecting misspelled words by providing a fast lookup for valid words.</li>
+    <li><strong>Dictionary Implementations:</strong> Tries are ideal for implementing dictionaries that support fast lookups and prefix searches.</li>
+    <li><strong>IP Routing:</strong> In networking, Tries can be used for efficient IP address lookups and routing.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Conclusion</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Tries are a powerful data structure for managing strings and are essential for many applications that involve prefix-based searching and sorting. Their efficiency and versatility make them a valuable tool in computer science and software development.
+</p>
+
+</body>
+</html>

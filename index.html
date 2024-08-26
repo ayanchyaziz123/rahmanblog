@@ -10,7 +10,6 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            
         }
         .slider-menu {
             position: fixed;
@@ -59,42 +58,66 @@
             color: #081c54;
         }
         .image-container {
-    position: relative;
-    width: 100%;
-    height: 400px; /* You can adjust the height as needed */
-    overflow: hidden;
-    background-color: #f0f0f0; /* Optional: a fallback background color */
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the container */
-}
-
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-}
-
-.image-overlay h1 {
-    font-size: 2rem; /* Adjust as needed */
-    font-weight: bold;
-    margin: 0;
-}
-
-.image-overlay p {
-    font-size: 1rem; /* Adjust as needed */
-}
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .image-overlay h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+            margin-top: -40px;
+        }
+        .image-overlay p {
+            font-size: 1rem;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination li button {
+            padding: 8px 16px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .pagination li button:hover {
+            background-color: #081c54;
+        }
+        .pagination li button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -119,13 +142,12 @@
         <img src="image/cover5.jpg" alt="Cover Image">
         <div class="image-overlay">
             <div class="overlay-text">
-                <h1>Welcome to RahmanBlog</h1>
+                <h1>RahmanBlog</h1>
                 <p>Your go-to source for coding insights, tutorials, and tech tips, along with a passion for astronomy.</p>
             </div>
         </div>
     </div>
     
-
     <!-- Slider Menu -->
     <div id="slider-menu" class="slider-menu bg-white p-6 shadow-md">
         <span id="close-menu" class="close-btn">&times;</span>
@@ -136,24 +158,27 @@
     </div>
 
     <!-- Main Content Container -->
-   <!-- Main Content Container -->
-   <div class="container mx-auto mt-8 flex flex-wrap" style="margin-top: -100px; position: relative; z-index: 10;">
+    <div class="container mx-auto mt-8 flex flex-wrap" style="margin-top: -100px; position: relative; z-index: 10;">
+        <!-- Sidebar (Visible only on large screens) -->
+        <aside class="hidden md:block w-1/4 bg-white p-6 shadow-md mb-8 mt-7">
+            <div id="categories-container-sidebar" class="space-y-2">
+                <!-- Categories and posts will be dynamically inserted here -->
+            </div>
+        </aside>
 
-    <!-- Sidebar (Visible only on large screens) -->
-    <aside class="hidden md:block w-1/4 bg-white p-6 shadow-md mb-8 mt-7">
-        <div id="categories-container-sidebar" class="space-y-2">
-            <!-- Categories and posts will be dynamically inserted here -->
-        </div>
-    </aside>
+        <!-- Main Content -->
+        <main class="w-full md:w-3/4 md:p-6">
+            <div id="posts-container">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+            <ul id="pagination" class="pagination">
+                <!-- Pagination buttons will be dynamically inserted here -->
+            </ul>
+        </main>
+    </div>
 
-    <!-- Main Content -->
-    <main class="w-full md:w-3/4 md:p-6" id="posts-container">
-        <!-- Posts will be dynamically inserted here -->
-    </main>
-</div>
-
-     <!-- Footer -->
-     <footer class="bg-gray-900 text-white p-6 mt-8">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-6 mt-8">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 RahmanBlog. All rights reserved.</p>
             <div class="mt-4">
@@ -174,7 +199,6 @@
     </footer>
 
     <script src="posts.js"></script>
-
     <script>
         // Menu toggle for small devices
         const menuToggle = document.getElementById('menu-toggle');
@@ -191,97 +215,136 @@
             menuToggle.classList.remove('menu-toggle-hidden');
         });
 
-        // Simulated blog posts data
-        // const posts = [
-        //     { id: 1, title: 'ডেটা স্ট্রাকচার কী?', author: 'Author 1', date: 'August 23, 2024', summary: 'This is a brief summary of the blog post. Click the title to read the full post.', link: 'fullpost.html?id=1', category: 'Data Structures (Basic)' },
-        //     { id: 2, title: 'Blog Post Title 2', author: 'Author 2', date: 'August 22, 2024', summary: 'This is a brief summary of another blog post. Click the title to read the full post.', link: 'fullpost.html?id=2', category: 'Dynamic Programming' },
-        //     { id: 3, title: 'Blog Post Title 3', author: 'Author 2', date: 'August 22, 2024', summary: 'This is a brief summary of another blog post. Click the title to read the full post.', link: 'fullpost.html?id=3', category: 'Dynamic Programming' }
-        // ];
+        const postsPerPage = 10; // Number of posts per page
+        let currentPage = 1; // Current page number
 
-        // // Simulated categories data
-        // const categories = ['Data Structures (Basic)', 'Data Structures (Advanced)', 'Sorting Algorithms', 'Dynamic Programming', 'Object-Oriented Programming'];
-
-        // Function to render posts
+        // Function to render posts with pagination
         function renderPosts(selectedCategory) {
-    const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = posts
-        .filter(post => !selectedCategory || post.category === selectedCategory)
-        .map(post => `
-            <article class="bg-white p-6 shadow-md mb-6 relative m-1 flex flex-col md:flex-row">
-                <div class="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
-                    <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded">
-                </div>
-                <div class="w-full md:w-3/4">
-                    <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center">
-                        <i class="fas fa-share-alt"></i>
-                    </button>
-                    <h2 class="text-2xl font-bold mb-4 text-gray-800">
-                        <a href="${post.link}" class="hover:underline">${post.title}</a>
-                    </h2>
-                    <p class="text-gray-600 mb-4">By ${post.author} | ${post.date}</p>
-                    <p class="text-gray-800 leading-relaxed mb-4">
-                        ${post.summary}
-                    </p>
-                    <a href="${post.link}" class="absolute bottom-4 text-blue-500 hover:underline">
-                        Read More
-                    </a>
-                </div>
-            </article>
-        `).join('');
+            const postsContainer = document.getElementById('posts-container');
+            const filteredPosts = posts.filter(post => !selectedCategory || post.category === selectedCategory);
+            const totalPosts = filteredPosts.length;
+            const totalPages = Math.ceil(totalPosts / postsPerPage);
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = Math.min(startIndex + postsPerPage, totalPosts);
+            const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
+            postsContainer.innerHTML = paginatedPosts.map(post => `
+                <article class="bg-white p-6 shadow-md mb-6 relative m-1 flex flex-col md:flex-row">
+                    <div class="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded">
+                    </div>
+                    <div class="w-full md:w-3/4">
+                        <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center" onclick="sharePost('${post.title}', '${post.link}')">
+    <i class="fas fa-share"></i>
+</button>
+
+                        <h2 class="text-2xl font-bold mb-2">${post.title}</h2>
+                        <p class="text-gray-700 mb-2">${post.summary}</p>
+                        <p class="text-gray-500 text-sm mb-2">Author: ${post.author}</p>
+                        <p class="text-gray-500 text-sm mb-4">Date: ${post.date}</p>
+                        <a href="${post.link}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Read More</a>
+                    </div>
+                </article>
+            `).join('');
+
+            renderPagination(totalPages);
+        }
+
+        // Function to render pagination buttons
+        function renderPagination(totalPages) {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+
+            // Previous button
+            const prevButton = document.createElement('li');
+            const prevButtonElement = document.createElement('button');
+            prevButtonElement.textContent = 'Previous';
+            prevButtonElement.disabled = currentPage === 1;
+            prevButtonElement.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPosts();
+                }
+            });
+            prevButton.appendChild(prevButtonElement);
+            paginationContainer.appendChild(prevButton);
+
+            // Page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('li');
+                const pageButtonElement = document.createElement('button');
+                pageButtonElement.textContent = i;
+                pageButtonElement.disabled = currentPage === i;
+                pageButtonElement.addEventListener('click', () => {
+                    currentPage = i;
+                    renderPosts();
+                });
+                pageButton.appendChild(pageButtonElement);
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Next button
+            const nextButton = document.createElement('li');
+            const nextButtonElement = document.createElement('button');
+            nextButtonElement.textContent = 'Next';
+            nextButtonElement.disabled = currentPage === totalPages;
+            nextButtonElement.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderPosts();
+                }
+            });
+            nextButton.appendChild(nextButtonElement);
+            paginationContainer.appendChild(nextButton);
+        }
+
+        function sharePost(title, link) {
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            url: link
+        }).then(() => {
+            console.log('Post shared successfully');
+        }).catch((error) => {
+            console.error('Error sharing post:', error);
+        });
+    } else {
+        alert('Web Share API is not supported in your browser. Please copy the link manually.');
+    }
 }
 
-
-
-        // Function to render categories with post titles
+        // Render categories in both slider menu and sidebar
         function renderCategories() {
             const categoriesContainer = document.getElementById('categories-container');
             const categoriesContainerSidebar = document.getElementById('categories-container-sidebar');
+            const categories = [...new Set(posts.map(post => post.category))];
 
-            // Create a map of categories to their posts
-            const categoryToPosts = {};
-            posts.forEach(post => {
-                if (!categoryToPosts[post.category]) {
-                    categoryToPosts[post.category] = [];
-                }
-                categoryToPosts[post.category].push(post);
+            categoriesContainer.innerHTML = categories.map(category => `
+                <div>
+                    <h3 class="text-lg font-semibold">${category}</h3>
+                    <div class="posts-list">
+                        ${posts.filter(post => post.category === category).map(post => `
+                            <a href="${post.link}" class="hover:text-gray-400">${post.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            categoriesContainerSidebar.innerHTML = categoriesContainer.innerHTML;
+
+            // Add event listeners to category buttons for filtering posts
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const selectedCategory = button.querySelector('h3').textContent;
+                    renderPosts(selectedCategory);
+                });
             });
-
-            // Render categories and posts in slider menu and sidebar
-            categoriesContainer.innerHTML = Object.keys(categoryToPosts).map(category => `
-                <div>
-                    <h3 class="font-bold text-gray-800 mb-2">
-                        ${category} (${categoryToPosts[category].length})
-                    </h3>
-                    <div class="posts-list">
-                        ${categoryToPosts[category].map(post => `
-                            <a href="${post.link}">${post.title}</a>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-
-            categoriesContainerSidebar.innerHTML = Object.keys(categoryToPosts).map(category => `
-                <div>
-                    <h3 class="font-bold text-gray-800 mb-2">
-                        ${category} (${categoryToPosts[category].length})
-                    </h3>
-                    <div class="posts-list">
-                        ${categoryToPosts[category].map(post => `
-                            <a href="${post.link}">${post.title}</a>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Filter posts by selected category
-        function filterPostsByCategory(category) {
-            renderPosts(category);
         }
 
         // Initial render
-        renderCategories();
         renderPosts();
+        renderCategories();
     </script>
 </body>
 </html>

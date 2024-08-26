@@ -20,8 +20,9 @@ const posts = [
         date: 'August 22, 2024', 
         link: 'fullpost.html?id=2', 
         category: 'Data Structures (Basic)', 
-        contentPath: 'blog_content/blog2.html',
-        summary: 'A detailed explanation of different data types, their uses, and how they are implemented in programming.'
+        contentPath: 'blog_content/blog2/blog2.html',
+        summary: 'A detailed explanation of different data types, their uses, and how they are implemented in programming.',
+        image: 'blog_content/blog2/blog2_image.jpg'
     },
     { 
         id: 3, 
@@ -30,8 +31,9 @@ const posts = [
         date: 'August 22, 2024', 
         link: 'fullpost.html?id=3', 
         category: 'Data Structures (Basic)', 
-        contentPath: 'blog_content/blog3.html',
-        summary: 'Understanding Big O Notation and its role in evaluating the efficiency of algorithms.'
+        contentPath: 'blog_content/blog3/blog3.html',
+        summary: 'Understanding Big O Notation and its role in evaluating the efficiency of algorithms.',
+        image: 'blog_content/blog3/blog3_image.avif'
     },
     { 
         id: 4, 
@@ -40,8 +42,9 @@ const posts = [
         date: 'August 22, 2024', 
         link: 'fullpost.html?id=4', 
         category: 'Data Structures (Basic)', 
-        contentPath: 'blog_content/blog4.html',
-        summary: 'An introduction to arrays, including their properties, types, and common operations.'
+        contentPath: 'blog_content/blog4/blog4.html',
+        summary: 'An introduction to arrays, including their properties, types, and common operations.',
+        image: 'blog_content/blog4/blog4_image.jpg'
     },
     { 
         id: 5, 
@@ -50,8 +53,9 @@ const posts = [
         date: 'August 22, 2024', 
         link: 'fullpost.html?id=5', 
         category: 'Data Structures (Basic)', 
-        contentPath: 'blog_content/blog5.html',
-        summary: 'Exploring the stack data structure, its operations, and real-world applications.'
+        contentPath: 'blog_content/blog5/blog5.html',
+        summary: 'Exploring the stack data structure, its operations, and real-world applications.',
+        image: 'blog_content/blog5/blog5_image.webp'
     }
 ];
 

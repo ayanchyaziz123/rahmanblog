@@ -9,7 +9,8 @@ const posts = [
         category: 'Data Structures (Basic)', 
         contentPath: 'blog_content/blog1/blog1.html',
         summary: 'An overview of what data structures are, their importance, and basic types used in computer science.',
-        image: 'blog_content/blog1/blog1_image.jpg'
+        image: 'blog_content/blog1/blog1_image.jpg',
+        tags: ['Data Structures', 'Basics']
     },
     { 
         id: 2, 
@@ -20,7 +21,8 @@ const posts = [
         category: 'Data Structures (Basic)', 
         contentPath: 'blog_content/blog2/blog2.html',
         summary: 'A detailed explanation of different data types, their uses, and how they are implemented in programming.',
-        image: 'blog_content/blog2/blog2_image.jpg'
+        image: 'blog_content/blog2/blog2_image.jpg',
+        tags: ['Data Types']
     },
     { 
         id: 3, 
@@ -174,19 +176,22 @@ const posts = [
         category: 'Object-Oriented Programming', 
         contentPath: 'blog_content/blog16/blog16.html',
         summary: 'Understanding polymorphism, its types, and how it enhances flexibility and functionality in OOP.',
-        image: 'blog_content/blog16/blog16_image.png'
+        image: 'blog_content/blog16/blog16_image.png',
+        tags: ['OOP']
     },
-    { 
-        id: 17, 
-        title: 'Abstraction', 
-        author: 'Rahman', 
-        date: 'August 28, 2024', 
-        link: 'fullpost.html?id=17', 
-        category: 'Object-Oriented Programming', 
-        contentPath: 'blog_content/blog17/blog17.html',
-        summary: 'A comprehensive guide to abstraction in OOP, its benefits, and how to implement it effectively.',
-        image: 'blog_content/blog17/blog17_image.webp'
+    {
+        id: 18,
+        title: 'Dijkstra’s Algorithm: Finding the Shortest Path',
+        author: 'Rahman',
+        date: 'September 2, 2024',
+        link: 'fullpost.html?id=18',
+        category: 'Algorithms',
+        contentPath: 'blog_content/blog18/blog18.html',
+        summary: 'An in-depth guide to Dijkstra’s Algorithm, including its working principle, implementation in Python, and practical applications for finding the shortest path in graphs.',
+        image: 'blog_content/blog18/blog18_image.png',
+        tags: ['Algorithms', 'Shortest Path', 'Priority Queue']
     }
+    
 ];
 
 // Simulated categories data
@@ -195,5 +200,6 @@ const categories = [
     'Data Structures (Advanced)', 
     'Sorting Algorithms', 
     'Dynamic Programming', 
-    'Object-Oriented Programming'
+    'Object-Oriented Programming',
+    'Algorithm'
 ];

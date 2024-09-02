@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Post - RahmanBlog</title>
+    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/image/fav.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -256,15 +258,26 @@
             const post = fetchPost(postId);
 
             document.getElementById('post').innerHTML = `
-                <h1 class="text-2xl font-bold mb-4 text-gray-800">${post.title}</h1>
-                <p class="text-gray-600 mb-4">
-    <i class="fas fa-user mr-2"></i>${post.author} 
-    <span class="mx-2">|</span> 
-    <i class="fas fa-calendar-alt mr-2"></i>${post.date}
-</p>
-                <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded mb-4" style="max-height: 500px;">
-                <div id="post-content" class="text-gray-800 leading-relaxed">Loading content...</div>
-            `;
+        <h1 class="text-2xl font-bold mb-4 text-gray-800">${post.title}</h1>
+
+        <div class="mt-2 mb-1">
+            ${post.tags && post.tags.length > 0 ? post.tags.map((tag, index) => `
+                <a href="tags_page.html?tag=${encodeURIComponent(tag)}" class="text-blue-600 mr-2 cursor-pointer hover:text-blue-700">
+                    <i class="fas fa-at mr-1"></i>${tag}${index < post.tags.length - 1 ? ', ' : ''}
+                </a>
+            `).join('') : 'No tags available'}
+        </div>
+        
+        <p class="text-gray-600 mb-4">
+            <i class="fas fa-user mr-2"></i>${post.author} 
+            <span class="mx-2">|</span> 
+            <i class="fas fa-calendar-alt mr-2"></i>${post.date}
+        </p>
+
+        <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded mb-4" style="max-height: 500px;">
+        <div id="post-content" class="text-gray-800 leading-relaxed">Loading content...</div>
+       
+    `;
 
             if (post.contentPath) {
                 fetchAndDisplayContent(post.contentPath);

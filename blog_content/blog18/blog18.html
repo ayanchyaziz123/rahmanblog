@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dijkstra’s Algorithm Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      color: #1f2937;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .code-container {
+      background: #2e3440;
+      color: #d8dee9;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .code-container pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .code-container h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <h1 style="font-size: 28px;">Dijkstra’s Algorithm Explained</h1>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      Dijkstra’s Algorithm is a popular algorithm used for finding the shortest path between nodes in a graph. It is widely used in various applications like GPS navigation, network routing, and more. This blog post will explain how Dijkstra’s Algorithm works, and provide Python code examples to demonstrate its implementation.
+  </p>
+
+  <h2 style="font-size: 24px;">What is Dijkstra’s Algorithm?</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      Dijkstra’s Algorithm finds the shortest path from a starting node to all other nodes in a weighted graph with non-negative edge weights. The algorithm maintains a priority queue to explore the closest node and updates the shortest path to each neighboring node iteratively.
+  </p>
+
+  <h2 style="font-size: 24px;">How Dijkstra’s Algorithm Works</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      The algorithm follows these steps:
+  </p>
+  <ul style="font-size: 18px; margin-bottom: 20px;">
+      <li><strong>Initialize:</strong> Set the distance to the starting node to 0 and all other nodes to infinity. Use a priority queue to explore nodes based on their distance.</li>
+      <li><strong>Update Distances:</strong> For the current node, update the distances to its neighboring nodes. If a shorter path is found, update the distance and add the neighbor to the priority queue.</li>
+      <li><strong>Repeat:</strong> Continue exploring nodes until all nodes have been visited or the shortest path to the destination node has been found.</li>
+      <li><strong>Retrieve Path:</strong> Backtrack from the destination node to the starting node to retrieve the shortest path.</li>
+  </ul>
+
+  <h2 style="font-size: 24px;">Example and Code</h2>
+
+  <div class="code-container">
+    <h3>Example: Dijkstra’s Algorithm in Python</h3>
+    <pre><code># Python code to implement Dijkstra's Algorithm
+import heapq
+
+class Graph:
+    def __init__(self):
+        self.graph = {}
+        
+    def add_edge(self, u, v, w):
+        if u not in self.graph:
+            self.graph[u] = []
+        if v not in self.graph:
+            self.graph[v] = []
+        self.graph[u].append((v, w))
+        self.graph[v].append((u, w))  # For undirected graph
+
+    def dijkstra(self, start):
+        # Initialize distances and priority queue
+        distances = {node: float('inf') for node in self.graph}
+        distances[start] = 0
+        priority_queue = [(0, start)]
+        
+        while priority_queue:
+            current_distance, u = heapq.heappop(priority_queue)
+            
+            if current_distance > distances[u]:
+                continue
+            
+            for neighbor, weight in self.graph[u]:
+                distance = current_distance + weight
+                if distance < distances[neighbor]:
+                    distances[neighbor] = distance
+                    heapq.heappush(priority_queue, (distance, neighbor))
+        
+        return distances
+
+# Creating a graph and applying Dijkstra's Algorithm
+g = Graph()
+g.add_edge('A', 'B', 1)
+g.add_edge('A', 'C', 4)
+g.add_edge('B', 'C', 2)
+g.add_edge('B', 'D', 5)
+g.add_edge('C', 'D', 1)
+
+distances = g.dijkstra('A')
+print("Shortest distances from A:", distances)
+    </code></pre>
+  </div>
+
+  <h2 style="font-size: 24px;">Common Applications</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      Dijkstra’s Algorithm is used in various real-world applications:
+  </p>
+  <ul style="font-size: 18px; margin-bottom: 20px;">
+      <li><strong>GPS Navigation:</strong> Finding the shortest route between locations.</li>
+      <li><strong>Network Routing:</strong> Optimizing data packet routing in networks.</li>
+      <li><strong>Pathfinding in Games:</strong> Determining the shortest path for characters.</li>
+      <li><strong>Flight Scheduling:</strong> Finding the shortest path for flights based on travel time.</li>
+  </ul>
+
+  <h2 style="font-size: 24px;">Why Dijkstra’s Algorithm Matters</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      Dijkstra’s Algorithm is fundamental for solving shortest path problems in weighted graphs. Its efficiency and accuracy make it a valuable tool in various fields, from computer science to transportation planning.
+  </p>
+
+  <p style="font-size: 18px;">
+      Mastering Dijkstra’s Algorithm provides a solid foundation for understanding more complex graph algorithms and enhances problem-solving skills in both theoretical and practical scenarios.
+  </p>
+</div>
+
+</body>
+</html>

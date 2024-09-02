@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags - RahmanBlog</title>
+    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/image/fav.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        .slider-menu.open {
+            left: 0;
+        }
+        .slider-menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .menu-toggle-hidden {
+            display: none;
+        }
+        .category-btn {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .category-btn:hover {
+            background-color: #e2e8f0;
+        }
+        .posts-list {
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .posts-list a {
+            display: block;
+            color: #1d4ed8;
+            text-decoration: none;
+            margin-bottom: 4px;
+        }
+        .posts-list a:hover {
+            color: #081c54;
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .image-overlay h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .image-overlay p {
+            font-size: 0.875rem;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination li button {
+            padding: 8px 16px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .pagination li button:hover {
+            background-color: #081c54;
+        }
+        .pagination li button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="index.html" class="hover:underline">RahmanBlog</a>
+            </div>
+            <div class="hidden md:flex">
+                <a href="about.html" class="hover:text-gray-400 mx-2">About Me</a>
+                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2">Why Coding and Astronomy?</a>
+            </div>
+            <div class="flex md:hidden">
+                <button id="menu-toggle" class="text-white text-2xl">
+                    &#9776;
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slider Menu -->
+    <div id="slider-menu" class="slider-menu bg-white p-6 shadow-md">
+        <span id="close-menu" class="close-btn">&times;</span>
+        <h2 class="text-xl font-bold mb-4 text-gray-800">Categories</h2>
+        <div id="categories-container" class="space-y-2">
+            <!-- Categories and posts will be dynamically inserted here -->
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto mt-2 flex flex-col md:flex-row">
+        <!-- Sidebar -->
+        <aside class="hidden md:block w-1/4 bg-white p-6 shadow-md mb-8 mt-7">
+            <div id="categories-container-sidebar" class="space-y-2">
+                <!-- Categories and posts will be dynamically inserted here -->
+            </div>
+        </aside>
+
+        
+        <!-- Posts -->
+        <main class="w-full md:w-3/4 p-6">
+            <h1 class="text-3xl font-bold mb-6" id="tag-title">Tagged with: </h1>
+            <div id="posts-container">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+            
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-6 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 RahmanBlog. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-2">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="posts.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sliderMenu = document.getElementById('slider-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sliderMenu.classList.add('open');
+            menuToggle.classList.add('hidden'); // Hide the menu toggle button when menu is open
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sliderMenu.classList.remove('open');
+            menuToggle.classList.remove('hidden'); // Show the menu toggle button when menu is closed
+        });
+
+        // Function to get the tag from the URL
+        function getTagFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('tag') || ''; // Default to empty string if not found
+        }
+
+        // Function to render posts based on the tag
+        function renderPosts(tag) {
+            const postsContainer = document.getElementById('posts-container');
+            const filteredPosts = posts.filter(post => post.tags && post.tags.includes(tag));
+            filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            postsContainer.innerHTML = filteredPosts.map(post => `
+                <article class="bg-white p-6 shadow-md mb-6 relative flex flex-col md:flex-row">
+                    <div class="flex items-center w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
+    <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded" style="max-height: 140px;">
+</div>
+                    <div class="w-full md:w-3/4">
+                        <button class="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center justify-center" onclick="sharePost('${post.title}', '${post.link}')">
+                            <i class="fas fa-share"></i>
+                        </button>
+                        <h2 class="text-2xl font-bold mb-2">${post.title}</h2>
+                        <p class="text-gray-700 mb-2">${post.summary}</p>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <p>${post.date}</p>
+                        </div>
+                        <a href="${post.link}" class="text-blue-500 py-2 rounded hover:text-blue-800 font-bold">Read More</a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Function to share a post
+        function sharePost(title, link) {
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    url: link
+                }).then(() => {
+                    console.log('Post shared successfully');
+                }).catch((error) => {
+                    console.error('Error sharing post:', error);
+                });
+            } else {
+                alert('Web Share API is not supported in your browser. Please copy the link manually.');
+            }
+        }
+
+        // Function to render categories
+        function renderCategories() {
+            const categoriesContainer = document.getElementById('categories-container');
+            const categoriesContainerSidebar = document.getElementById('categories-container-sidebar');
+            const categories = [...new Set(posts.map(post => post.category))];
+
+            categoriesContainer.innerHTML = categories.map(category => `
+                <div>
+                    <h3 class="text-lg font-semibold">${category}</h3>
+                    <div class="posts-list">
+                        ${posts.filter(post => post.category === category).map(post => `
+                            <a href="${post.link}" class="hover:text-gray-400">${post.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            categoriesContainerSidebar.innerHTML = categoriesContainer.innerHTML;
+
+            // Add event listeners to category buttons for filtering posts
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const selectedCategory = button.querySelector('h3').textContent;
+                    renderPosts(selectedCategory);
+                });
+            });
+        }
+
+        // Initial render
+        const tag = getTagFromURL();
+        document.getElementById('tag-title').textContent = `Posts Tagged with: ${tag}`;
+        renderPosts(tag);
+        renderCategories();
+    </script>
+</body>
+
+</html>

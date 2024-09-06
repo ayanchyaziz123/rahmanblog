@@ -1,0 +1,100 @@
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #3490dc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #2779bd;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container bg-white shadow-lg p-6 rounded-lg mt-10">
+        <h1 class="text-xl font-bold">Is Unique - Algorithm Problem</h1>
+        <p>Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional
+            data structures?</p>
+
+        <h2 class="mt-6 font-semibold text-lg">Example:</h2>
+        <pre><code>
+Input: "abcdefg"
+Output: true
+
+Input: "hello"
+Output: false
+        </code></pre>
+
+        <h2 class="mt-6 font-semibold text-lg">Approach:</h2>
+        <p>To solve this problem, you can use different approaches:</p>
+
+        <ul class="list-disc list-inside">
+            <li><strong>Using a Set or Hash Map:</strong> Iterate through the string and store each character in a set. If a
+                character is found in the set, return false. If you reach the end of the string without finding duplicates,
+                return true.</li>
+            <li><strong>Without using additional data structures:</strong> Compare every character with every other
+                character in the string, checking for duplicates. This approach has a time complexity of O(n<sup>2</sup>).
+            </li>
+        </ul>
+
+        <h2 class="mt-6 font-semibold text-lg">Pseudocode:</h2>
+        <pre><code>
+// With additional data structures
+function isUnique(str) {
+    let charSet = new Set();
+    for (let char of str) {
+        if (charSet.has(char)) {
+            return false;
+        }
+        charSet.add(char);
+    }
+    return true;
+}
+
+// Without additional data structures
+function isUniqueNoDS(str) {
+    for (let i = 0; i < str.length; i++) {
+        for (let j = i + 1; j < str.length; j++) {
+            if (str[i] === str[j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+        </code></pre>
+
+        <a href="index.html" class="btn-back">Back to Questions</a>
+    </div>
+</body>

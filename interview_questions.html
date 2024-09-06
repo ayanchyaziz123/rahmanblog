@@ -120,14 +120,14 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            padding: 20px;
+            padding: 4px;
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             z-index: 100;
             width: 90%;
-            max-width: 900px;
-            max-height: 80%;
+            max-width: 1200px;
+            max-height: 90%;
             overflow-y: auto;
         }
 
@@ -145,7 +145,7 @@
             float: right;
             cursor: pointer;
             color: red;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
         }
 
         .overlay {
@@ -270,7 +270,7 @@
                 title: 'Is Unique', 
                 link: 'question1.html', 
                 tags: ['Array', 'Hash Table'], 
-                fullQuestion: '<p>Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?</p>', 
+                fullQuestion: 'interviewQuestionAndSolution/QA1/question.html', 
                 solution: '<p>Use a hash map to track characters seen so far.</p><ul><li>Initialize an empty hash map.</li><li>Iterate through the string and check if the character is already in the hash map.</li><li>If found, return false. If not, add it to the hash map.</li><li>If the loop completes, return true.</li></ul>' 
             },
             { 
@@ -321,9 +321,7 @@
                         </div>
                     </div>
                     <div class="question-actions">
-                        <button class="toggle-content" onclick="toggleContent(${question.id})" title="Question or Solution">
-                            Question
-                        </button>
+                        <button class="toggle-content" onclick="loadExternalContent('${question.fullQuestion}')" title="View Question">Question</button>
                         <label class="flex items-center mt-2">
                             <input type="checkbox" ${isChecked} onchange="toggleSolve(${question.id})" />
                             <span class="ml-2">Solved</span>
@@ -333,21 +331,18 @@
             `;
         }
 
-        let currentQuestionId = null;
-        let showingQuestion = true;
-
-        function toggleContent(questionId) {
-            const question = questions.find(q => q.id === questionId);
-            if (currentQuestionId === questionId) {
-                showingQuestion = !showingQuestion;
-            } else {
-                currentQuestionId = questionId;
-                showingQuestion = true;
-            }
-            const content = showingQuestion ? question.fullQuestion : question.solution;
-            const button = document.querySelector(`button[onclick="toggleContent(${questionId})"]`);
-            button.textContent = showingQuestion ? 'View Solution' : 'Question';
-            showPopover(showingQuestion ? 'Full Question' : 'Solution', content);
+        function loadExternalContent(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('popover-content').innerHTML = data;
+                    document.getElementById('popover').classList.add('visible');
+                    document.getElementById('overlay').classList.add('visible');
+                })
+                .catch(error => {
+                    console.error('Error loading content:', error);
+                    alert('Failed to load the content.');
+                });
         }
 
         function toggleSolve(questionId) {
@@ -367,12 +362,6 @@
             const progressPercent = (solvedCount / totalQuestions) * 100;
             document.getElementById('progress-bar').style.width = `${progressPercent}%`;
             document.getElementById('progress-text').textContent = `Solved ${solvedCount} out of ${totalQuestions}`;
-        }
-
-        function showPopover(title, content) {
-            document.getElementById('popover-content').innerHTML = `<div class="popover-header">${title}</div><p>${content}</p>`;
-            document.getElementById('popover').classList.add('visible');
-            document.getElementById('overlay').classList.add('visible');
         }
 
         document.getElementById('popover-close').addEventListener('click', () => {

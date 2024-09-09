@@ -1,54 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - RahmanBlog</title>
-    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/image/fav.png" type="image/png">
+    <link rel="icon" href="/image/fav.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-gray-100">
+
+<body class="bg-gray-100 font-sans leading-relaxed">
+
     <!-- Navbar -->
     <nav class="bg-gray-900 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold font-roboto">
+            <div class="text-2xl font-bold">
                 <a href="index.html" class="hover:underline hover:text-blue-400 transition duration-300 ease-in-out">
                     RAHMAN<span class="text-blue-500">BLOG</span>
                 </a>
             </div>
-            <div class="hidden md:flex">
-                <a href="about.html" class="hover:text-gray-400 mx-2 text-gray-400">About Me</a>
-                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2">Why Coding and Astronomy?</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="about.html" class="hover:text-gray-400 text-gray-400">About Me</a>
+                
             </div>
-            <div class="flex md:hidden">
-                <a href="about.html" class="hover:text-gray-400 text-gray-400 mx-2 text-gray-400">About</a>
-                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2">Why?</a>
-            </div>
-            
         </div>
     </nav>
 
+
+
     <!-- Main Content -->
-    <div class="container mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
-        <h1 class="text-3xl font-bold text-gray-800 mb-6">About Me</h1>
-        <p class="text-gray-700 leading-relaxed">
-            Hi there! I’m Rahman Azizur Ayan, a dedicated software engineer with a deep passion for the cosmos. With a background in Computer Science and a love for both coding and astronomy, I created this blog to document my journey and share insights at the crossroads of these two exciting fields.
-        </p>
-        <p class="text-gray-700 leading-relaxed mt-4">
-            My fascination with technology began when I was 17 years old. Since then, I’ve been driven by a desire to innovate and explore, whether it's through developing software solutions or delving into the mysteries of the universe.
-        </p>
-        <p class="text-gray-700 leading-relaxed mt-4">
-            Beyond coding and stargazing, I am always on the lookout for new experiences and learning opportunities. Through this blog, I hope to connect with fellow enthusiasts and inspire others who share a passion for technology and the stars.
-        </p>
-    </div>
+    <div class="container mx-auto mt-8 p-6 bg-white shadow-md rounded-lg max-w-5xl">
+
     
+        <!-- Profile Section with Cover Image as Background -->
+        <div class="relative bg-cover bg-center h-[500px] rounded-lg mt-[-200px]"
+            style="background-image: url('./image/cover7.jpeg');">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent rounded-lg">
+            </div>
+            <div class="relative z-10 text-center pt-24 pb-6">
+                <img src="/image/dp2.jpeg" alt="Profile Picture"
+                    class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white">
+                <h1 class="text-4xl font-bold text-white mb-4">Rahman Azizur Ayan</h1>
+                <p class="text-lg text-white">SDE Engineer | Java | JS | Python | MySQL</p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="https://www.linkedin.com/in/azizur-rahman-720636165/" class="text-white hover:text-blue-700" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/ayanchyaziz123" class="text-white hover:text-gray-700" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                    <a href="mailto:azizurusa22@gmail.com" class="text-white hover:text-red-700" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- About Me Section -->
+        <section class="mb-12 mt-8">
+
+            <p class="text-gray-700 leading-relaxed"><span class="text-2xl"> Hi there!</span> I’m Rahman Azizur Ayan, a dedicated software engineer
+                with a passion for the cosmos. With a background in Computer Science and a love for both coding and
+                astronomy, I created this blog to document my journey and share insights at the crossroads of these two
+                exciting fields.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">My fascination with technology began at 17 years old. Since
+                then, I’ve been driven by a desire to innovate and explore, whether it's through developing software
+                solutions or delving into the mysteries of the universe.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">Beyond coding and stargazing, I am always on the lookout for
+                new experiences and learning opportunities. Through this blog, I hope to connect with fellow enthusiasts
+                and inspire others who share a passion for technology and the stars.
+            </p>
+        </section>
+
+      <!-- Education Section -->
+<section id="study" class="py-12">
+    <h2 class="text-3xl font-extrabold mb-8 text-blue-600 text-center">Education</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Study 1 -->
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-200">
+            <h3 class="text-xl font-bold text-blue-600 mb-2">Bachelor of Science in Computer Science and Engineering</h3>
+            <p class="text-gray-700 mb-2">Metropolitan University</p>
+            <p class="text-gray-500 mb-4">2018 - 2022</p>
+            <p class="text-gray-700">Specialized in backend development and software engineering, with a focus on programming languages, algorithms, and database management.</p>
+        </div>
+
+        <!-- Study 2 -->
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-200">
+            <h3 class="text-xl font-bold text-blue-600 mb-2">Master of Science in Computer Science and Artificial Intelligence</h3>
+            <p class="text-gray-700 mb-2">Indiana Wesleyan University</p>
+            <p class="text-gray-500 mb-4">2024 - Present</p>
+            <p class="text-gray-700">Advanced coursework in software architecture, machine learning, and cloud-based solutions. Engaged in research and capstone projects.</p>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Experience Section -->
+     <!-- Experience Section -->
+<section id="experience" class="py-12">
+    <h2 class="text-3xl font-extrabold mb-8 text-blue-600 text-center">Experience</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Experience 1 -->
+       
+        
+        <!-- Experience 3: Coding Mentor -->
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-200">
+            <h3 class="text-xl font-bold text-blue-600 mb-2">Coding Mentor - CUNY Queens College</h3>
+            <p class="text-gray-700 mb-2">2023 - 2024</p>
+            <p class="text-gray-700 mb-4">Guidance: Supported students and aspiring developers in learning programming languages and concepts.</p>
+            <p class="text-gray-700 mb-4">OOP Principles: Assisted in understanding and applying object-oriented programming principles.</p>
+            <p class="text-gray-700 mb-4">Debugging: Helped with debugging, troubleshooting code, and improving efficiency.</p>
+            <p class="text-gray-700 mb-4">Best Practices: Encouraged clean code, modularization, and proper documentation.</p>
+            <p class="text-gray-700 mb-4">Career Advice: Provided insights into the software development industry and technical interview preparation.</p>
+        </div>
+        
+        <!-- Experience 4: Assistant Manager -->
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-200">
+            <h3 class="text-xl font-bold text-blue-600 mb-2">Assistant Manager - Kennedy Fried Chicken & Pizza</h3>
+            <p class="text-gray-700 mb-2">Jan 2023 - Aug 2023 · Part-time</p>
+            <p class="text-gray-700 mb-4">Managed day-to-day operations, supervised staff, and ensured excellent customer service. Coordinated with team members to optimize workflows and enhance operational efficiency.</p>
+            <ul class="text-gray-700 list-disc ml-6">
+                <li>Oversaw daily operations and staff performance.</li>
+                <li>Handled customer inquiries and resolved issues promptly.</li>
+                <li>Implemented operational improvements to enhance service quality.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Projects Section -->
+        <section>
+            <h2 class="text-3xl font-extrabold mb-8 text-blue-600 text-center">Project</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                    <img src="https://raw.githubusercontent.com/ayanchyaziz123/final-year-project-main/master/screenshoot/1.Home%20page.png"
+                        alt="Project 1" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold text-blue-400 mb-2">Django & React E-commerce</h3>
+                    <p class="text-gray-300 mb-4">A comprehensive e-commerce platform built with Django for the backend
+                        and React for the frontend. It features machine learning for personalized recommendations.</p>
+                    <a href="https://github.com/ayanchyaziz123/final-year-project-main"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfsEFFoexBBRsnN29ZFEdd0Rui6BVXVjkHdQ&s"
+                        alt="Project 2" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold text-blue-400 mb-2">AI-Powered House Price Prediction</h3>
+                    <p class="text-gray-300 mb-4">A predictive model developed using Django and machine learning
+                        techniques
+                        to estimate real estate prices based on various input features.</p>
+                    <a href="https://github.com/ayanchyaziz123/house-price-prediction-system"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*OMNHx4EGPm0J6TWc9N1UpQ.png" alt="Project 3"
+                        class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold text-blue-400 mb-2">Interactive Algorithm Visualizer</h3>
+                    <p class="text-gray-300 mb-4">A React application that visually demonstrates various data structures
+                        and algorithms, providing an interactive learning experience.</p>
+                    <a href="https://github.com/ayanchyaziz123/algorithm-visualizer"
+                        class="text-blue-500 hover:underline">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white p-6 mt-8">
+    <footer class="bg-gray-900 text-white p-6 mt-12">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 RahmanBlog. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
+
 </html>

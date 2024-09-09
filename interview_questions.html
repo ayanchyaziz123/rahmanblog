@@ -3,605 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 Interview Questions - RahmanBlog</title>
-    <link rel="icon" href="/image/fav.png" type="image/png">
+    <title>Top 100 LeetCode Questions - RahmanBlog</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .question-section {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .question-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #1d4ed8;
-        }
-
-        .question-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .question-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .question-item:hover {
-            background-color: #e2e8f0;
-        }
-
-        .question-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .question-item button {
-            padding: 6px 12px;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .toggle-content {
-            background-color: #4CAF50; /* Green */
-        }
-
-        .toggle-content:hover {
-            background-color: #45a049;
-        }
-
-        .tag {
-            background-color: #e2e8f0;
-            color: #1d4ed8;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            margin-right: 5px;
-        }
-
-        .solved {
-            background-color: #10b981;
-            color: white;
-        }
-
-        .progress-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .progress-bar {
-            background-color: #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden;
-            height: 20px;
-            margin: 10px auto;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .progress {
-            height: 100%;
-            background-color: #1d4ed8;
-            transition: width 0.4s ease;
-        }
-
-        .progress-text {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #1d4ed8;
-        }
-
-        /* Popover styles */
-        .popover {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 4px;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            z-index: 100;
-            width: 90%;
-            max-width: 1200px;
-            max-height: 90%;
-            overflow-y: auto;
-        }
-
-        .popover.visible {
-            display: block;
-        }
-
-        .popover-header {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-        }
-
-        .popover-close {
-            float: right;
-            cursor: pointer;
-            color: red;
-            font-size: 2.5rem;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 99;
-        }
-
-        .overlay.visible {
-            display: block;
-        }
-
-        /* Responsive design tweaks */
-        @media (max-width: 768px) {
-            .question-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .question-actions {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .progress-bar {
-                width: 90%;
-            }
-        }
+        .popover { display: none; position: absolute; top: 0; left: 0; background: white; border: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1rem; }
+        .popover.visible { display: block; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); }
+        .overlay.visible { display: block; }
+        .category-badge { background-color: #e0f7fa; color: #00796b; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem; }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-gray-900 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <a href="index.html" class="hover:underline hover:text-blue-400 transition duration-300 ease-in-out">
-                    RAHMAN<span class="text-blue-500">BLOG</span>
-                </a>
-            </div>
-            <div class="hidden md:flex">
-                <a href="about.html" class="hover:text-gray-400 mx-2">About Me</a>
-                <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Top 100 Interview Questions</a>
-            </div>
-            <div class="flex md:hidden">
-                <a href="about.html" class="hover:text-gray-400 mx-2">Me</a>
-                <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Interview Q</a>
-            </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-white text-2xl focus:outline-none">&#9776;</button>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Top 100 LeetCode Questions and Solutions</h1>
+        
+        <!-- Progress Tracker -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Progress Tracker</h2>
+            <div class="flex items-center gap-4">
+                <div class="flex-1 bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div id="progress-bar" class="bg-blue-500 h-full" style="width: 0%;"></div>
+                </div>
+                <span id="progress-text" class="text-sm text-gray-700">0/100 solved</span>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="index.html" class="block py-2 px-4 hover:bg-gray-700">Home</a>
-            <a href="about.html" class="block py-2 px-4 hover:bg-gray-700">About Me</a>
-            <a href="why_astronomy_coding.html" class="block py-2 px-4 hover:bg-gray-700">Why Coding and Astronomy?</a>
-        </div>
-    </nav>
 
-    <!-- Page Header -->
-    <header class="bg-blue-500 text-white py-6">
-        <div class="container mx-auto text-center">
-            <h1 class="text-3xl font-bold">100 Interview Questions</h1>
-            <p class="mt-2">Enhance your interview preparation with top coding challenges and solutions.</p>
-        </div>
-    </header>
-
-    <!-- Progress Section -->
-    <div class="progress-container">
-        <p class="progress-text" id="progress-text">Solved 0 out of 100</p>
-        <div class="progress-bar">
-            <div class="progress" id="progress-bar" style="width: 0%;"></div>
-        </div>
+        <!-- Question List -->
+        <ul id="question-list" class="space-y-4">
+            <!-- Questions will be dynamically inserted here -->
+        </ul>
     </div>
 
-    <!-- Questions Section -->
-    <div class="container mx-auto mt-8">
-        <div class="question-section" id="array-string-section">
-            <h2 class="question-title">Array and String</h2>
-            <ul class="question-list" id="array-string-list"></ul>
-        </div>
-
-        <div class="question-section" id="linked-list-section">
-            <h2 class="question-title">Linked List</h2>
-            <ul class="question-list" id="linked-list-list"></ul>
-        </div>
-    </div>
-
-    <!-- Popover for displaying question and solution -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popover" id="popover">
-        <span class="popover-close" id="popover-close">&times;</span>
+    <!-- Popover for Solution -->
+    <div id="popover" class="popover">
         <div id="popover-content"></div>
+        <button onclick="closePopover()" class="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">Close</button>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white p-6 mt-8">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 RahmanBlog. All rights reserved.</p>
-            <div class="mt-4">
-                <a href="#" class="text-gray-400 hover:text-white mx-2">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white mx-2">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white mx-2">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white mx-2">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <div id="overlay" class="overlay" onclick="closePopover()"></div>
 
     <script>
-    const questions = [
-    { 
-        id: 1, 
-        category: 'Array and String',
-        title: 'Is Unique', 
-        description: "Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?",
-        input1: 'abcd',
-        output1: 'true',
-        input2: 'abbcd',
-        output2: 'false',
-        problemLink: 'https://leetcode.com/problems/is-unique/',
-        link: 'question1.html', 
-        tags: ['Array', 'Hash Table'], 
-        solution: 'interviewQuestionAndSolution/QA1/question.html', 
-    },
-    { 
-        id: 2, 
-        category: 'Linked List',
-        title: 'Remove Duplicates from Unsorted Linked List', 
-        description: "Write code to remove duplicates from an unsorted linked list.",
-        input1: '1 -> 2 -> 3 -> 2 -> 1',
-        output1: '1 -> 2 -> 3',
-        input2: '4 -> 5 -> 6 -> 6 -> 5',
-        output2: '4 -> 5 -> 6',
-        problemLink: 'https://leetcode.com/problems/remove-duplicates-from-sorted-list/',
-        link: 'question2.html', 
-        tags: ['Linked List'], 
-        solution: 'interviewQuestionAndSolution/QA2/question.html', 
-    },
-    { 
-        id: 3, 
-        category: 'String',
-        title: 'Check Permutations', 
-        description: "Given two strings, write a method to decide if one is a permutation of the other.",
-        input1: 'abc',
-        output1: 'true',
-        input2: 'cba',
-        output2: 'true',
-        problemLink: 'https://leetcode.com/problems/check-permutation/',
-        link: 'question3.html', 
-        tags: ['String', 'Hash Table'], 
-        solution: 'interviewQuestionAndSolution/QA3/question.html', 
-    },
-    { 
-        id: 4,
-        category: 'Array',
-        title: 'URKify',
-        description: "Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient space at the end to hold the additional characters, and you need to perform the replacement in place.",
-        input1: 'Mr John Smith    ', // Input with extra space for replacement
-        output1: 'Mr%20John%20Smith',
-        input2: 'Hello World    ', // Input with extra space for replacement
-        output2: 'Hello%20World',
-        problemLink: 'https://leetcode.com/problems/urlify/',
-        link: 'question4.html',
-        tags: ['Array', 'String'],
-        solution: 'interviewQuestionAndSolution/QA4/question.html',
-    },
-    { 
-        id: 5,
-        category: 'String',
-        title: 'Longest Substring Without Repeating Characters',
-        description: "Given a string, find the length of the longest substring without repeating characters.",
-        input1: 'abcabcbb',
-        output1: '3',
-        input2: 'bbbbb',
-        output2: '1',
-        problemLink: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
-        link: 'question5.html',
-        tags: ['String', 'Sliding Window'],
-        solution: 'interviewQuestionAndSolution/QA5/question.html',
-    },
-    { 
-        id: 6,
-        category: 'String',
-        title: 'Palindrome Permutation',
-        description: "Given a string, write a method to check if it is a permutation of a palindrome. A palindrome is a word or phrase that reads the same backward as forward. For example, 'civic' or 'ivicc' are palindromes, but 'hello' is not.",
-        input1: 'civic',
-        output1: 'true',
-        input2: 'hello',
-        output2: 'false',
-        problemLink: 'https://leetcode.com/problems/palindrome-permutation/',
-        link: 'question6.html',
-        tags: ['String', 'Hash Table'],
-        solution: 'interviewQuestionAndSolution/QA6/question.html',
-    },
-    { 
-        id: 7,
-        category: 'String',
-        title: 'One Away',
-        description: "There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a method to check if they are one edit (or zero edits) away from being the same.",
-        input1: 'pale',
-        output1: 'true', // pale → ple (remove 'a')
-        input2: 'pale',
-        output2: 'false', // pale → bake (replace 'p' with 'b')
-        problemLink: 'https://leetcode.com/problems/one-away/',
-        link: 'question7.html',
-        tags: ['String'],
-        solution: 'interviewQuestionAndSolution/QA7/question.html',
-    },
-    { 
-        id: 8,
-        category: 'String',
-        title: 'String Compression',
-        description: "Implement a method to perform basic string compression using the counts of repeated characters. For example, the string 'aabcccccaaa' would become 'a2b1c5a3'. If the compressed string is not shorter than the original string, your method should return the original string.",
-        input1: 'aabcccccaaa',
-        output1: 'a2b1c5a3',
-        input2: 'abcd',
-        output2: 'abcd',
-        problemLink: 'https://leetcode.com/problems/string-compression/',
-        link: 'question8.html',
-        tags: ['String'],
-        solution: 'interviewQuestionAndSolution/QA8/question.html',
-    },
-    { 
-        id: 9,
-        category: 'Matrix',
-        title: 'Rotate Matrix',
-        description: "Given an NxN matrix, write a method to rotate the matrix by 90 degrees in place. For example, given the following matrix: [[1, 2, 3], [4, 5, 6], [7, 8, 9]], the method should transform it to [[7, 4, 1], [8, 5, 2], [9, 6, 3]].",
-        input1: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
-        output1: [[7, 4, 1], [8, 5, 2], [9, 6, 3]],
-        input2: [[1, 2], [3, 4]],
-        output2: [[3, 1], [4, 2]],
-        problemLink: 'https://leetcode.com/problems/rotate-image/',
-        link: 'question9.html',
-        tags: ['Matrix'],
-        solution: 'interviewQuestionAndSolution/QA9/question.html',
-    },
-    { 
-        id: 10,
-        category: 'Matrix',
-        title: 'Zero Matrix',
-        description: "Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0. For example, given the following matrix: [[1, 2, 3], [4, 0, 6], [7, 8, 9]], the matrix should become [[1, 0, 3], [0, 0, 0], [7, 0, 9]].",
-        input1: [[1, 2, 3], [4, 0, 6], [7, 8, 9]],
-        output1: [[1, 0, 3], [0, 0, 0], [7, 0, 9]],
-        input2: [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
-        output2: [[0, 0, 0], [0, 4, 5], [0, 7, 8]],
-        problemLink: 'https://leetcode.com/problems/set-matrix-zeroes/',
-        link: 'question10.html',
-        tags: ['Matrix'],
-        solution: 'interviewQuestionAndSolution/QA10/question.html',
-    },
-    { 
-        id: 11,
-        category: 'String',
-        title: 'String Rotation',
-        description: "Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write a method to check if s2 is a rotation of s1 using only one call to isSubstring.",
-        input1: ['waterbottle', 'erbottlewat'],
-        output1: 'true',
-        input2: ['hello', 'oellh'],
-        output2: 'false',
-        problemLink: 'https://leetcode.com/problems/string-rotation/',
-        link: 'question11.html',
-        tags: ['String'],
-        solution: 'interviewQuestionAndSolution/QA11/question.html',
-    },
-    { 
-        id: 12,
-        category: 'Linked List',
-        title: 'Return Kth to Last',
-        description: "Implement an algorithm to find the kth to last element of a singly linked list. For example, if the list is: A -> B -> C -> D -> E and k is 2, the method should return D.",
-        input1: 'A -> B -> C -> D -> E, k = 2',
-        output1: 'D',
-        input2: '1 -> 2 -> 3 -> 4 -> 5, k = 3',
-        output2: '3',
-        problemLink: 'https://leetcode.com/problems/kth-to-last-element/',
-        link: 'question12.html',
-        tags: ['Linked List'],
-        solution: 'interviewQuestionAndSolution/QA12/question.html',
-    },
-    { 
-        id: 13,
-        category: 'Linked List',
-        title: 'Delete Middle Node',
-        description: "Implement an algorithm to delete the middle node in a singly linked list, given only access to that node.",
-        input1: 'A -> B -> C -> D -> E',
-        output1: 'A -> B -> D -> E',
-        input2: '1 -> 2 -> 3 -> 4',
-        output2: '1 -> 2 -> 4',
-        problemLink: 'https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/',
-        link: 'question13.html',
-        tags: ['Linked List'],
-        solution: 'interviewQuestionAndSolution/QA13/question.html',
-    },
-    { 
-        id: 14,
-        category: 'Linked List',
-        title: 'Partition',
-        description: "Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x.",
-        input1: '3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1, x = 5',
-        output1: '3 -> 2 -> 1 -> 5 -> 8 -> 5 -> 10',
-        input2: '1 -> 4 -> 3 -> 2 -> 5 -> 2, x = 3',
-        output2: '1 -> 2 -> 2 -> 4 -> 3 -> 5',
-        problemLink: 'https://leetcode.com/problems/partition-list/',
-        link: 'question14.html',
-        tags: ['Linked List'],
-        solution: 'interviewQuestionAndSolution/QA14/question.html',
-    },
-    { 
-        id: 15,
-        category: 'Linked List',
-        title: 'Sum Lists',
-        description: "You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order. Write a method to add the two numbers and return it as a linked list.",
-        input1: '7 -> 1 -> 6 + 5 -> 9 -> 2',
-        output1: '2 -> 1 -> 9',
-        input2: '3 -> 4 -> 2 + 4 -> 6 -> 5',
-        output2: '8 -> 0 -> 7',
-        problemLink: 'https://leetcode.com/problems/add-two-numbers/',
-        link: 'question15.html',
-        tags: ['Linked List', 'Math'],
-        solution: 'interviewQuestionAndSolution/QA15/question.html',
-    },
-    { 
-        id: 16,
-        category: 'Linked List',
-        title: 'Palindrome',
-        description: "Implement a function to check if a linked list is a palindrome. For example, the linked list: 1 -> 2 -> 3 -> 2 -> 1 is a palindrome.",
-        input1: '1 -> 2 -> 3 -> 2 -> 1',
-        output1: 'true',
-        input2: '1 -> 2 -> 3 -> 4 -> 5',
-        output2: 'false',
-        problemLink: 'https://leetcode.com/problems/palindrome-linked-list/',
-        link: 'question16.html',
-        tags: ['Linked List', 'Palindrome'],
-        solution: 'interviewQuestionAndSolution/QA16/question.html',
-    },
-    { 
-        id: 17,
-        category: 'Linked List',
-        title: 'Intersection',
-        description: "Given two linked lists, determine if they intersect. Return the intersecting node. If the linked lists have no intersection, return null.",
-        input1: 'A -> B -> C -> D -> E, F -> G -> H -> D',
-        output1: 'D',
-        input2: '1 -> 2 -> 3, 4 -> 5',
-        output2: 'null',
-        problemLink: 'https://leetcode.com/problems/intersection-of-two-linked-lists/',
-        link: 'question17.html',
-        tags: ['Linked List'],
-        solution: 'interviewQuestionAndSolution/QA17/question.html',
-    },
-    { 
-        id: 18,
-        category: 'Linked List',
-        title: 'Loop Detection',
-        description: "Implement an algorithm to detect if a linked list has a cycle. If there is a cycle, return the node where the cycle begins.",
-        input1: 'A -> B -> C -> D -> E (cycle at C)',
-        output1: 'C',
-        input2: '1 -> 2 -> 3 -> 4 (no cycle)',
-        output2: 'null',
-        problemLink: 'https://leetcode.com/problems/linked-list-cycle/',
-        link: 'question18.html',
-        tags: ['Linked List', 'Cycle Detection'],
-        solution: 'interviewQuestionAndSolution/QA18/question.html',
-    }
-];
+        const questions = [
+            {
+                id: 1, 
+                category: 'Array',
+                title: 'Two Sum', 
+                description: "Given an array of integers, return indices of the two numbers such that they add up to a specific target.",
+                input1: '[2, 7, 11, 15], target = 9',
+                output1: '[0, 1]',
+                problemLink: 'https://leetcode.com/problems/two-sum/',
+                solution: 'interviewQuestionAndSolution/QA1/twosum.html',
+                tags: ['Array', 'Hash Table']
+            },
+            {
+                id: 2, 
+                category: 'String',
+                title: 'Valid Parentheses', 
+                description: "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+                input1: '"()"',
+                output1: 'true',
+                problemLink: 'https://leetcode.com/problems/valid-parentheses/',
+                solution: 'interviewQuestionAndSolution/QA2/validparentheses.html',
+                tags: ['String', 'Stack']
+            },
+            {
+                id: 3, 
+                category: 'LinkedList',
+                title: 'Merge Two Sorted Lists', 
+                description: "Merge two sorted linked lists and return it as a sorted list.",
+                input1: '[1, 2, 4], [1, 3, 4]',
+                output1: '[1, 1, 2, 3, 4, 4]',
+                problemLink: 'https://leetcode.com/problems/merge-two-sorted-lists/',
+                solution: 'interviewQuestionAndSolution/QA3/mergetwosortedlists.html',
+                tags: ['LinkedList', 'Recursion']
+            },
+            // Add more questions here
+        ];
 
-
-
-
-        const solvedQuestions = JSON.parse(localStorage.getItem('solvedQuestions')) || [];
-
-        function renderQuestionsByCategory() {
-            const arrayStringList = document.getElementById('array-string-list');
-            const linkedListList = document.getElementById('linked-list-list');
-
-            arrayStringList.innerHTML = questions
-                .filter(q => q.tags.includes('Array') || q.tags.includes('String'))
-                .map(renderQuestionItem)
-                .join('');
-
-            linkedListList.innerHTML = questions
-                .filter(q => q.tags.includes('Linked List'))
-                .map(renderQuestionItem)
-                .join('');
-
-            updateProgress();
+        function renderQuestions() {
+            const questionList = document.getElementById('question-list');
+            questionList.innerHTML = questions.map(q => `
+                <li class="question-item p-4 border border-gray-300 bg-white rounded-lg shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="flex flex-col w-full md:w-auto">
+                        <span class="font-bold text-lg">${q.title}</span>
+                        <span class="category-badge mt-1">${q.category}</span>
+                        <span class="text-md text-gray-700 mt-2">${q.description}</span>
+                        <span class="text-sm text-gray-600 mt-1"><strong>Input:</strong> ${q.input1}</span>
+                        <span class="text-sm text-gray-600"><strong>Output:</strong> ${q.output1}</span>
+                        <a href="${q.problemLink}" target="_blank" class="text-sm text-blue-500 italic mt-2 hover:underline">Online Judge: ${q.title}</a>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            ${q.tags.map(tag => `<span class="tag bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="question-actions flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">
+                        <button 
+                            class="toggle-content bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200"
+                            onclick="loadExternalContent('${q.solution}')"
+                            title="View Full Solution"
+                            aria-label="View Solution">
+                            Solution
+                        </button>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 transition duration-150 ease-in-out" onchange="toggleSolve(${q.id})" />
+                            <span class="ml-2 text-sm text-gray-700">Solved</span>
+                        </label>
+                    </div>
+                </li>
+            `).join('');
         }
-
-        function renderQuestionItem(question) {
-    const isChecked = solvedQuestions.includes(question.id) ? 'checked' : '';
-    
-    // Handles missing data by providing default values
-    const title = question.title || 'No Title Available';
-    const input1 = question.input1 || 'No Input Example';
-    const output1 = question.ouput1 || 'No Output Example';
-    const problemLink = question.problemLink || 'No Online Judge Specified';
-    const tags = question.tags || [];
-
-    return `
-    <li class="question-item p-4 border border-gray-300 bg-white rounded-lg shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-    <div class="flex flex-col w-full md:w-auto">
-        <!-- Question Title -->
-        <span class="font-bold text-lg">${title}</span>
-
-        <!-- Question Description -->
-        <span class="text-md text-gray-700 mt-2">${question.description || 'Description not available'}</span>
-
-        <!-- Input and Output Examples -->
-        <span class="text-sm text-gray-600 mt-1"><strong>Input 1:</strong> ${input1}</span>
-        <span class="text-sm text-gray-600"><strong>Output 1:</strong> ${question.output1}</span>
-        <span class="text-sm text-gray-600"><strong>Input 2:</strong> ${question.input2 || 'No Input Example'}</span>
-        <span class="text-sm text-gray-600"><strong>Output 2:</strong> ${question.output2 || 'No Output Example'}</span>
-
-        <!-- Online Judge Link -->
-        <a href="${problemLink}" target="_blank" class="text-sm text-blue-500 italic mt-2 hover:underline">Online judge same problem: ${problemLink}</a>
-
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-2 mt-3">
-            ${tags.map(tag => `<span class="tag bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">${tag}</span>`).join('')}
-        </div>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="question-actions flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">
-        <!-- View Solution Button -->
-        <button 
-            class="toggle-content bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200"
-            onclick="loadExternalContent('${question.solution}')"
-            title="View Full Solution"
-            aria-label="View Solution">
-            Solution
-        </button>
-
-        <!-- Solved Checkbox -->
-        <label class="flex items-center">
-            <input type="checkbox" ${isChecked} 
-                class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 transition duration-150 ease-in-out" 
-                onchange="toggleSolve(${question.id})" 
-                aria-label="Mark as Solved" />
-            <span class="ml-2 text-sm text-gray-700">Solved</span>
-        </label>
-    </div>
-</li>
-
-    `;
-}
 
         function loadExternalContent(url) {
             fetch(url)
@@ -617,37 +125,25 @@
                 });
         }
 
-        function toggleSolve(questionId) {
-            const index = solvedQuestions.indexOf(questionId);
-            if (index > -1) {
-                solvedQuestions.splice(index, 1);
-            } else {
-                solvedQuestions.push(questionId);
-            }
-            localStorage.setItem('solvedQuestions', JSON.stringify(solvedQuestions));
-            renderQuestionsByCategory();
-        }
-
-        function updateProgress() {
-            const solvedCount = solvedQuestions.length;
-            const totalQuestions = 100;
-            const progressPercent = (solvedCount / totalQuestions) * 100;
-            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
-            document.getElementById('progress-text').textContent = `Solved ${solvedCount} out of ${totalQuestions}`;
-        }
-
-        document.getElementById('popover-close').addEventListener('click', () => {
+        function closePopover() {
             document.getElementById('popover').classList.remove('visible');
             document.getElementById('overlay').classList.remove('visible');
-        });
+        }
 
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleSolve(id) {
+            // Update progress here based on checked state
+            const solvedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const totalQuestions = questions.length;
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
 
-        renderQuestionsByCategory();
+            const percentage = (solvedCount / totalQuestions) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${solvedCount}/${totalQuestions} solved`;
+        }
+
+        // Initial Render
+        renderQuestions();
     </script>
 </body>
 </html>

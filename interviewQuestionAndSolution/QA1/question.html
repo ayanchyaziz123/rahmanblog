@@ -71,17 +71,13 @@ Output: false
         <h2 class="mt-6 font-semibold text-lg">Pseudocode:</h2>
         <pre><code>
 // With additional data structures
-function isUnique(str) {
-    let charSet = new Set();
-    for (let char of str) {
-        if (charSet.has(char)) {
-            return false;
-        }
-        charSet.add(char);
-    }
-    return true;
-}
-
+def isUnique(st):
+    check = []
+    for s in st:
+        if s in check:
+           return False
+        check.append(s)
+    return True
 // Without additional data structures
 function isUniqueNoDS(str) {
     for (let i = 0; i < str.length; i++) {

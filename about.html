@@ -15,7 +15,7 @@
         }
         .slider-images img {
             width: 100%;
-            height: 500px; /* Ensure all images have a fixed height */
+            height: 450px; /* Ensure all images have a fixed height */
             object-fit: cover; /* Ensures all images are uniformly fitted */
             flex-shrink: 0;
         }
@@ -47,7 +47,7 @@
 
 
     <!-- Main Content -->
-    <div class="container mx-auto mt-8 p-6 bg-white shadow-md rounded-lg max-w-5xl">
+    <div class="container mx-auto mt-2 p-6 bg-white shadow-md rounded-lg max-w-5xl">
 
     
         <!-- Profile Section with Cover Image as Background -->
@@ -192,49 +192,74 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Project 1 with Slider -->
-                <div class="bg-white p-6 shadow-lg rounded-lg border">
-                    <div class="relative">
-                        <div class="overflow-hidden rounded-md">
-                            <div class="slider-images flex transition-transform duration-500 ease-in-out">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/final-year-project-main/master/screenshoot/1.Home%20page.png" alt="Project 1 Slide 1" class="w-full h-48 object-cover">
-                                <img src="https://github.com/ayanchyaziz123/final-year-project-main/raw/master/screenshoot/2.Product%20page.png?raw=true" alt="Project 1 Slide 2" class="w-full h-48 object-cover">
-                                <img src="https://github.com/ayanchyaziz123/final-year-project-main/raw/master/screenshoot/3.Compare%202%20laptops.png?raw=true" alt="Project 1 Slide 3" class="w-full h-48 object-cover">
-                            </div>
-                        </div>
-                        <!-- Slider Controls -->
-                        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
-                        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
-                    </div>
-                    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Django & React E-commerce</h3>
-                    <p class="mb-4">A comprehensive e-commerce platform built with Django for the backend and React for the frontend. It features machine learning for personalized recommendations.</p>
-                    <a href="https://github.com/ayanchyaziz123/final-year-project-main" class="text-blue-500 hover:underline">View on GitHub</a>
-                </div>
-        
-                <!-- Project 2 with Slider -->
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <div class="relative">
-                        <div class="overflow-hidden rounded-md">
-                            <div class="slider-images flex transition-transform duration-500 ease-in-out">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfsEFFoexBBRsnN29ZFEdd0Rui6BVXVjkHdQ&s" alt="Project 2 Slide 1" class="w-full h-48 object-cover">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/house-price-prediction-system/master/screenshots/2.png" alt="Project 2 Slide 2" class="w-full h-48 object-cover">
-                            </div>
-                        </div>
-                        <!-- Slider Controls -->
-                        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
-                        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
-                    </div>
-                    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">AI-Powered House Price Prediction</h3>
-                    <p class="text-gray-700 mb-4">A predictive model developed using Django and machine learning techniques to estimate real estate prices based on various input features.</p>
-                    <a href="https://github.com/ayanchyaziz123/house-price-prediction-system" class="text-blue-500 hover:underline">View on GitHub</a>
-                </div>
-        
+             <!-- Project 1 with Slider -->
+<div class="bg-white p-6 shadow-lg rounded-lg border">
+    <div class="relative">
+        <div class="overflow-hidden rounded-md">
+            <div class="slider-images flex transition-transform duration-500 ease-in-out">
+                <img src="https://raw.githubusercontent.com/ayanchyaziz123/final-year-project-main/master/screenshoot/1.Home%20page.png" alt="Project 1 Slide 1" >
+                <img src="https://github.com/ayanchyaziz123/final-year-project-main/raw/master/screenshoot/2.Product%20page.png?raw=true" alt="Project 1 Slide 2" class="w-full h-64 object-cover">
+                <img src="https://github.com/ayanchyaziz123/final-year-project-main/raw/master/screenshoot/3.Compare%202%20laptops.png?raw=true" alt="Project 1 Slide 3" >
+            </div>
+        </div>
+        <!-- Slider Controls -->
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
+    </div>
+    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Django & React E-commerce</h3>
+<p class="mb-4">
+    An advanced e-commerce platform developed using Django for backend services and React for frontend interfaces. Key features include:
+    <ul class="list-disc list-inside mb-4">
+        <li>Authentication system implemented with Django Rest Framework for secure user management and authentication.</li>
+        <li>Machine learning algorithms for personalized product recommendations, leveraging Pandas, Scikit-learn, and Numpy for accurate predictions.</li>
+        <li>Dynamic and responsive frontend built with React to enhance user experience and interaction.</li>
+        <li>Optimized backend services with Django to handle complex business logic and data processing.</li>
+    </ul>
+    The platform ensures a tailored shopping experience for users with its advanced recommendation system and secure authentication.
+</p>
+    <a href="https://github.com/ayanchyaziz123/final-year-project-main" class="text-blue-500 hover:underline">View on GitHub</a>
+</div>
+
+<!-- Project 2 with Slider -->
+<div class="bg-white p-6 shadow-lg rounded-lg border">
+    <div class="relative">
+        <div class="overflow-hidden rounded-md">
+            <div class="slider-images flex transition-transform duration-500 ease-in-out">
+                <img src="https://github.com/ayanchyaziz123/codingjudge/blob/master/coding_judge_frontend/public/home.png?raw=true" alt="Project 2 Slide 2" >
+                <img src="https://github.com/ayanchyaziz123/codingjudge/blob/master/coding_judge_frontend/public/accepted.png?raw=true" alt="Project 2 Slide 1" >
+                <img src="https://github.com/ayanchyaziz123/codingjudge/blob/master/coding_judge_frontend/public/Register.png?raw=true" alt="Project 2 Slide 2" >
+                
+            </div>
+        </div>
+        <!-- Slider Controls -->
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
+    </div>
+    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Personal Online Coding Judge</h3>
+    <p class="text-gray-700 mb-4">
+        A dynamic coding judge platform built with Node.js and Express.js for the backend and React.js for the frontend. Key features include:
+        <ul class="list-disc list-inside mb-4">
+            <li>Authentication system for secure user management and session handling, ensuring a personalized and secure coding environment.</li>
+            <li>API handling using the MVC (Model-View-Controller) pattern to maintain clean and organized backend code and facilitate efficient data management.</li>
+            <li>Interactive and intuitive user interface built with React.js, providing a seamless experience for coding challenges and solutions.</li>
+            <li>Responsive design implemented with Tailwind CSS to ensure compatibility across various devices and screen sizes.</li>
+        </ul>
+        The platform delivers an engaging and secure environment for users to practice and showcase their coding skills.
+    </p>
+    <a href="https://github.com/ayanchyaziz123/codingjudge" class="text-blue-500 hover:underline">View on GitHub</a>
+</div>
+
                 <!-- Project 3 with Slider -->
                 <div class="bg-white p-6 shadow-lg rounded-lg">
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
-                                <img src="https://miro.medium.com/v2/resize:fit:1400/1*OMNHx4EGPm0J6TWc9N1UpQ.png" alt="Project 3 Slide 1" class="w-full h-48 object-cover">
-                                <img src="https://github.com/ayanchyaziz123/algorithm-visualizer/blob/main/screenshots/screen2.png" alt="Project 3 Slide 2" class="w-full h-48 object-cover">
+                                
+                                
+                                <img src="https://github.com/ayanchyaziz123/algorithm-visualizer/blob/master/public/bs.png?raw=true" class="w-full h-48 object-cover">
+                                <img src="https://github.com/ayanchyaziz123/algorithm-visualizer/blob/master/public/sort.png?raw=true" class="w-full h-48 object-cover">
+                                <img src="https://github.com/ayanchyaziz123/algorithm-visualizer/blob/master/public/pn.png?raw=true">
+                                
                             </div>
                         </div>
                         <!-- Slider Controls -->
@@ -242,8 +267,19 @@
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
                     <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Interactive Algorithm Visualizer</h3>
-                    <p class="text-gray-700 mb-4">A React application that visually demonstrates various data structures and algorithms, providing an interactive learning experience.</p>
-                    <a href="https://github.com/ayanchyaziz123/algorithm-visualizer" class="text-blue-500 hover:underline">View on GitHub</a>
+                    <p class="text-gray-700 mb-4">
+                        A React application that visually demonstrates various data structures and algorithms, providing an interactive learning experience. Key features include:
+                        <ul class="list-disc list-inside mb-4">
+                            <li>Real-time visualization of different data structures and algorithms, such as sorting, searching, and graph algorithms, to aid in understanding complex concepts.</li>
+                            <li>Interactive controls to manipulate data and visualize how algorithms process it, allowing users to step through and debug their code effectively.</li>
+                            <li>Customizable visualizations with options to adjust speed, data size, and other parameters for a tailored learning experience.</li>
+                            <li>Responsive design with Tailwind CSS, ensuring compatibility and usability across various devices and screen sizes.</li>
+                            <li>Integration with popular algorithms and data structures libraries to provide accurate and up-to-date visual representations.</li>
+                        </ul>
+                        This tool serves as a valuable educational resource for students and professionals looking to enhance their understanding of algorithms and data structures.
+                    </p>
+                    
+                    <a href="https://github.com/ayanchyaziz123/algorithm-visualizer/tree/master" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
         
                 <!-- Project 4 with Slider -->
@@ -251,17 +287,29 @@
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/sample-project/master/img1.png" alt="Project 4 Slide 1" class="w-full h-48 object-cover">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/sample-project/master/img2.png" alt="Project 4 Slide 2" class="w-full h-48 object-cover">
+                                <img src="project_image/innovatepi/image1.png" class="w-full h-48 object-cover">
+                                <!-- <img src="https://raw.githubusercontent.com/ayanchyaziz123/sample-project/master/img2.png" alt="Project 4 Slide 2" class="w-full h-48 object-cover"> -->
                             </div>
                         </div>
                         <!-- Slider Controls -->
                         <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Sample Project 4</h3>
-                    <p class="text-gray-700 mb-4">Description of Project 4 goes here.</p>
-                    <a href="#" class="text-blue-500 hover:underline">View on GitHub</a>
+                    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Innovate Pi Next.js</h3>
+                    <p class="text-gray-700 mb-4">
+                        An advanced web application developed with Next.js for server-side rendering and static site generation, combined with Tailwind CSS for responsive and modern styling. Key features include:
+                        <ul class="list-disc list-inside mb-4">
+                            <li>**Server-Side Rendering (SSR):** Utilizes Next.js's SSR capabilities to deliver dynamic content quickly and efficiently, improving SEO and user experience.</li>
+                            <li>**Static Site Generation (SSG):** Implements SSG to pre-render pages at build time for optimal performance and faster load times.</li>
+                            <li>**API Routes:** Integrates API routes in Next.js to handle backend logic and interact with external services seamlessly.</li>
+                            
+                            <li>**Scalable Architecture:** Adopts a scalable architecture to accommodate growing traffic and evolving features, ensuring long-term performance and maintainability.</li>
+                            <li>**Optimized Performance:** Employs best practices in Next.js and Tailwind CSS to optimize page load times and overall application speed.</li>
+                        </ul>
+                        This project demonstrates a robust solution for building modern web applications with high performance and flexibility.
+                    </p>
+                    
+                    <a href="https://github.com/ayanchyaziz123/innovatepi" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
             </div>
         </section>

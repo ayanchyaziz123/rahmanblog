@@ -27,15 +27,20 @@
     <!-- Navbar -->
     <nav class="bg-gray-900 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
+            <div class="text-2xl font-bold font-roboto">
                 <a href="index.html" class="hover:underline hover:text-blue-400 transition duration-300 ease-in-out">
                     RAHMAN<span class="text-blue-500">BLOG</span>
                 </a>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="about.html" class="hover:text-gray-400 text-gray-400">About Me</a>
-                
+            <div class="hidden md:flex">
+                <a href="about.html" class="hover:text-gray-400 mx-2 text-gray-400"class="hover:text-gray-400 mx-2">About Me</a>
+                <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Top 100 Interview Questions</a>
             </div>
+            <div class="flex md:hidden">
+                <a href="about.html" class="hover:text-gray-400 mx-2 text-gray-400">Me</a>
+                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2"> Interview Q?</a>
+            </div>
+           
         </div>
     </nav>
 
@@ -187,7 +192,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Project 1 with Slider -->
-                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                <div class="bg-white p-6 shadow-lg rounded-lg border">
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
@@ -201,12 +206,12 @@
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
                     <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Django & React E-commerce</h3>
-                    <p class="text-gray-300 mb-4">A comprehensive e-commerce platform built with Django for the backend and React for the frontend. It features machine learning for personalized recommendations.</p>
+                    <p class="mb-4">A comprehensive e-commerce platform built with Django for the backend and React for the frontend. It features machine learning for personalized recommendations.</p>
                     <a href="https://github.com/ayanchyaziz123/final-year-project-main" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
-
+        
                 <!-- Project 2 with Slider -->
-                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                <div class="bg-white p-6 shadow-lg rounded-lg">
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
@@ -219,12 +224,12 @@
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
                     <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">AI-Powered House Price Prediction</h3>
-                    <p class="text-gray-300 mb-4">A predictive model developed using Django and machine learning techniques to estimate real estate prices based on various input features.</p>
+                    <p class="text-gray-700 mb-4">A predictive model developed using Django and machine learning techniques to estimate real estate prices based on various input features.</p>
                     <a href="https://github.com/ayanchyaziz123/house-price-prediction-system" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
-
+        
                 <!-- Project 3 with Slider -->
-                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                <div class="bg-white p-6 shadow-lg rounded-lg">
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
@@ -237,12 +242,12 @@
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
                     <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Interactive Algorithm Visualizer</h3>
-                    <p class="text-gray-300 mb-4">A React application that visually demonstrates various data structures and algorithms, providing an interactive learning experience.</p>
+                    <p class="text-gray-700 mb-4">A React application that visually demonstrates various data structures and algorithms, providing an interactive learning experience.</p>
                     <a href="https://github.com/ayanchyaziz123/algorithm-visualizer" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
-
+        
                 <!-- Project 4 with Slider -->
-                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
+                <div class="bg-white p-6 shadow-lg rounded-lg">
                     <div class="relative">
                         <div class="overflow-hidden rounded-md">
                             <div class="slider-images flex transition-transform duration-500 ease-in-out">
@@ -255,25 +260,7 @@
                         <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
                     </div>
                     <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Sample Project 4</h3>
-                    <p class="text-gray-300 mb-4">Description of Project 4 goes here.</p>
-                    <a href="#" class="text-blue-500 hover:underline">View on GitHub</a>
-                </div>
-
-                <!-- Project 5 with Slider -->
-                <div class="bg-gray-900 p-6 shadow-lg rounded-lg">
-                    <div class="relative">
-                        <div class="overflow-hidden rounded-md">
-                            <div class="slider-images flex transition-transform duration-500 ease-in-out">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/sample-project/master/img3.png" alt="Project 5 Slide 1" class="w-full h-48 object-cover">
-                                <img src="https://raw.githubusercontent.com/ayanchyaziz123/sample-project/master/img4.png" alt="Project 5 Slide 2" class="w-full h-48 object-cover">
-                            </div>
-                        </div>
-                        <!-- Slider Controls -->
-                        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="prevSlide(this)">&#10094;</button>
-                        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full hover:bg-gray-900" onclick="nextSlide(this)">&#10095;</button>
-                    </div>
-                    <h3 class="text-xl font-bold text-blue-400 mb-2 mt-4">Sample Project 5</h3>
-                    <p class="text-gray-300 mb-4">Description of Project 5 goes here.</p>
+                    <p class="text-gray-700 mb-4">Description of Project 4 goes here.</p>
                     <a href="#" class="text-blue-500 hover:underline">View on GitHub</a>
                 </div>
             </div>

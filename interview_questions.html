@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 100 LeetCode Questions - RahmanBlog</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        .popover { display: none; position: absolute; top: 0; left: 0; background: white; border: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1rem; }
-        .popover.visible { display: block; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); }
-        .overlay.visible { display: block; }
-        .category-badge { background-color: #e0f7fa; color: #00796b; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .category-badge {
+            background-color: #e0f7fa;
+            color: #00796b;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
+
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <!-- Navbar -->
     <nav class="bg-white text-gray-800 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-xl font-bold">
-                <a href="index.html" class="hover:underline text-blue-600 transition duration-300 ease-in-out">RAHMANBLOG</a>
+                <a href="index.html"
+                    class="hover:underline text-blue-600 transition duration-300 ease-in-out">RAHMANBLOG</a>
             </div>
             <div class="hidden md:flex space-x-4">
                 <a href="interview_questions.html" class="text-gray-400">Top 100 Interview Questions</a>
@@ -29,7 +34,7 @@
 
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-6">Top 100 LeetCode Questions and Solutions</h1>
-        
+
         <!-- Progress Tracker -->
         <div class="mb-6">
             <h2 class="text-xl font-semibold mb-2">Progress Tracker</h2>
@@ -47,53 +52,83 @@
         </div>
     </div>
 
-    <!-- Popover for Solution -->
-    <div id="popover" class="popover">
-        <div id="popover-content"></div>
-        <button onclick="closePopover()" class="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">Close</button>
-    </div>
-    <div id="overlay" class="overlay" onclick="closePopover()"></div>
-
     <script>
-        const questionsByCategory = {
-            "Sliding Window": [
-                {
-                    id: 1, 
-                    title: 'Find Maximum in Sliding Window', 
-                    description: "Given an array, find the maximum in each sliding window of size k.",
-                    input1: '[1, 3, -1, -3, 5, 3, 6, 7], k = 3',
-                    output1: '[3, 3, 5, 5, 6, 7]',
-                    problemLink: 'https://leetcode.com/problems/sliding-window-maximum/',
-                    solution: 'interviewQuestionAndSolution/SlidingWindow1.html',
-                    tags: ['Array', 'Sliding Window']
-                }
-            ],
-            "BFS/DFS": [
-                {
-                    id: 2, 
-                    title: 'Word Ladder', 
-                    description: "Given two words and a dictionary, find the shortest transformation sequence using BFS.",
-                    input1: '"hit", "cog", wordList = ["hot","dot","dog","lot","log","cog"]',
-                    output1: '5',
-                    problemLink: 'https://leetcode.com/problems/word-ladder/',
-                    solution: 'interviewQuestionAndSolution/BFS1.html',
-                    tags: ['Graph', 'BFS', 'DFS']
-                }
-            ],
-            "Trie": [
-                {
-                    id: 3, 
-                    title: 'Implement Trie (Prefix Tree)', 
-                    description: "Implement a Trie with insert, search, and startsWith methods.",
-                    input1: '["Trie","insert","search","startsWith"], [[],["apple"],["apple"],["app"]]',
-                    output1: '[null, null, true, true]',
-                    problemLink: 'https://leetcode.com/problems/implement-trie-prefix-tree/',
-                    solution: 'interviewQuestionAndSolution/Trie1.html',
-                    tags: ['Trie', 'Design']
-                }
-            ]
-        };
-
+       
+    const questionsByCategory = {
+        // The same data structure you provided
+        "Sliding Window": [
+            {
+                id: 1,
+                title: 'Find Maximum in Sliding Window',
+                description: "Given an array, find the maximum in each sliding window of size k.",
+                input1: '[1, 3, -1, -3, 5, 3, 6, 7], k = 3',
+                output1: '[3, 3, 5, 5, 6, 7]',
+                problemLink: 'https://leetcode.com/problems/sliding-window-maximum/',
+                solution: 'https://leetcode.com/problems/sliding-window-maximum/solution/',
+                tags: ['Array', 'Sliding Window'],
+                level: 'Hard'
+            },
+            {
+                id: 10,
+                title: 'Longest Substring Without Repeating Characters',
+                description: "Given a string s, find the length of the longest substring without repeating characters.",
+                input1: 'abcabcbb',
+                output1: '3',
+                problemLink: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
+                solution: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/',
+                tags: ['Array', 'Sliding Window', 'String'],
+                level: 'Medium'
+            }
+        ],
+        "BFS/DFS": [
+            {
+                id: 11,
+                title: 'Word Ladder',
+                description: "Given two words and a dictionary, find the shortest transformation sequence using BFS.",
+                input1: '"hit", "cog", wordList = ["hot","dot","dog","lot","log","cog"]',
+                output1: '5',
+                problemLink: 'https://leetcode.com/problems/word-ladder/',
+                solution: 'https://leetcode.com/problems/word-ladder/solution/',
+                tags: ['Graph', 'BFS', 'DFS'],
+                level: 'Medium'
+            },
+            {
+                id: 12,
+                title: 'Number of Islands',
+                description: "Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.",
+                input1: 'grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]',
+                output1: '1',
+                problemLink: 'https://leetcode.com/problems/word-ladder/',
+                solution: 'https://leetcode.com/problems/word-ladder/solution/',
+                tags: ['Graph', 'BFS', 'DFS'],
+                level: 'Medium'
+            }
+        ],
+        "Trie": [
+            {
+                id: 90,
+                title: 'Longest Common Prefix',
+                description: "Write a function to find the longest common prefix string amongst an array of strings.",
+                input1: 'strs = ["flower","flow","flight"]',
+                output1: 'fl',
+                problemLink: 'https://leetcode.com/problems/longest-common-prefix/',
+                solution: 'https://leetcode.com/problems/longest-common-prefix/',
+                tags: ['Trie', 'Design'],
+                level: 'Easy'
+            },
+            {
+                id: 91,
+                title: 'Implement Trie (Prefix Tree)',
+                description: "Implement a Trie with insert, search, and startsWith methods.",
+                input1: '["Trie","insert","search","startsWith"], [[],["apple"],["apple"],["app"]]',
+                output1: '[null, null, true, true]',
+                problemLink: 'https://leetcode.com/problems/implement-trie-prefix-tree/',
+                solution: 'https://leetcode.com/problems/implement-trie-prefix-tree/solution/',
+                tags: ['Trie', 'Design'],
+                level: 'Medium'
+            }
+        ]
+    };
         // Load saved solved questions from localStorage
         function loadSolvedQuestions() {
             return JSON.parse(localStorage.getItem('solvedQuestions')) || [];
@@ -114,7 +149,7 @@
         function toggleSolve(id) {
             const solvedQuestions = loadSolvedQuestions();
             const index = solvedQuestions.indexOf(id);
-            
+
             if (index === -1) {
                 solvedQuestions.push(id); // Add if not present
             } else {
@@ -142,13 +177,22 @@
             const questionContainer = document.getElementById('question-container');
             questionContainer.innerHTML = Object.keys(questionsByCategory).map(category => `
                 <div class="category-section mb-8">
-                    <h2 class="text-2xl font-bold mb-4">${category}</h2>
+                    <h2 class="text-2xl text-blue-600 font-bold mb-4">${category}</h2>
                     <ul class="space-y-4">
                         ${questionsByCategory[category].map(q => `
                             <li class="question-item p-4 border border-gray-300 bg-white rounded-lg shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                 <div class="flex flex-col w-full md:w-auto">
+                                    <span 
+  class="text-lg"
+  :class="{
+    'text-green-500': q.level === 'Easy',
+    'text-yellow-500': q.level === 'Medium',
+    'text-red-500': q.level === 'Hard'
+  }"
+>
+  ${q.level}
+</span>
                                     <span class="font-bold text-lg">${q.title}</span>
-                                    <span class="category-badge mt-1">${category}</span>
                                     <span class="text-md text-gray-700 mt-2">${q.description}</span>
                                     <span class="text-sm text-gray-600 mt-1"><strong>Input:</strong> ${q.input1}</span>
                                     <span class="text-sm text-gray-600"><strong>Output:</strong> ${q.output1}</span>
@@ -158,13 +202,14 @@
                                     </div>
                                 </div>
                                 <div class="question-actions flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">
-                                    <button 
+                                    <a 
+                                        href="${q.solution}" 
                                         class="toggle-content bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200"
-                                        onclick="loadExternalContent('${q.solution}')"
+                                        target="_blank"
                                         title="View Full Solution"
                                         aria-label="View Solution">
                                         Solution
-                                    </button>
+                                    </a>
                                     <label class="flex items-center">
                                         <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 transition duration-150 ease-in-out" 
                                             id="question-${q.id}" 
@@ -180,31 +225,14 @@
             `).join('');
         }
 
-        // Popover logic
-        function loadExternalContent(url) {
-            const popover = document.getElementById('popover');
-            const overlay = document.getElementById('overlay');
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('popover-content').innerHTML = data;
-                    popover.classList.add('visible');
-                    overlay.classList.add('visible');
-                });
-        }
-
-        function closePopover() {
-            const popover = document.getElementById('popover');
-            const overlay = document.getElementById('overlay');
-            popover.classList.remove('visible');
-            overlay.classList.remove('visible');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function () {
+        // Initialize page
+        function initPage() {
             renderQuestionsByCategory();
             updateProgress();
-        });
+        }
+
+        document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
+
 </html>

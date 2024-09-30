@@ -128,51 +128,40 @@
 
 <body class="bg-gray-100">
     <!-- Navbar -->
-    <nav class="bg-gray-900 text-white p-4">
+    <nav class="bg-white text-gray-800 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div class="text-xl font-bold font-roboto">
-                <a href="index.html" class="hover:underline hover:text-blue-400 transition duration-300 ease-in-out">
-                    RAHMAN<span class="text-blue-500">BLOG</span>
-                </a>
+            <div class="text-xl font-bold">
+                <a href="index.html" class="hover:underline text-blue-600 transition duration-300 ease-in-out">RAHMANBLOG</a>
             </div>
-            
-            <!-- Desktop Menu -->
-         
-                <div class="hidden md:flex">
-                    <a href="myInfo.html" class="hover:text-gray-400 mx-2">My Info</a>
-                    <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Top 100 Interview Questions</a>
-                </div>
-                <div class="flex md:hidden">
-                    <a href="myInfo.html" class="hover:text-gray-400 mx-2">My Info</a>
-                    <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Interview Q</a>
-                </div>
-                
-
-    
-            <!-- Mobile Menu Button -->
+            <div class="hidden md:flex space-x-4">
+                <a href="interview_questions.html" class="hover:text-blue-500">Top 100 Interview Questions</a>
+                <a href="myInfo.html" class="hover:text-blue-500">My Info</a>
+            </div>
+            <div class="flex md:hidden">
+                <a href="myInfo.html" class="hover:text-gray-400 mx-2 hover:text-gray-400">My Info</a>
+                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2"> Interview Q?</a>
+            </div>
             <div class="md:hidden">
-                <button id="menu-toggle" class="text-white text-2xl focus:outline-none">
-                    &#9776;
-                </button>
+                <button id="menu-toggle" class="text-gray-800 text-2xl">&#9776;</button>
             </div>
         </div>
-    
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="myInfo.html" class="block py-2 px-4 hover:bg-gray-700">My Info</a>
-            <a href="interview_questions.html" class="block py-2 px-4 hover:bg-gray-700">Top Interview Questions</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md rounded-md mt-2">
+            <a href="myInfo.html" class="block py-2 px-4 hover:bg-gray-100">My Info</a>
+            <a href="interview_questions.html" class="block py-2 px-4 hover:bg-gray-100">Top Interview Questions</a>
         </div>
     </nav>
-    <div class="image-container">
-        <img src="image/cover6.jpg" alt="Cover Image">
-        <div class="image-overlay">
-            <div class="overlay-text">
-                <h1>RAHMANBLOG</h1>
-                <p>Your go-to source for coding insights, tutorials, and tech tips, along with a passion for astronomy.</p>
+    
+    <div class="relative bg-cover bg-center h-96" style="background-image: url('image/cover6.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 flex justify-center items-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl font-bold">RAHMANBLOG</h1>
+                <p class="text-lg mt-4">Your go-to source for coding insights, tutorials, and tech tips.</p>
+                <a href="interview_questions.html" class="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Explore Top 100 Questions</a>
             </div>
         </div>
     </div>
+    
     
     <!-- Slider Menu -->
     <div id="slider-menu" class="slider-menu bg-white p-6 shadow-md">
@@ -186,7 +175,7 @@
     <!-- Main Content Container -->
     <div class="container mx-auto mt-8 flex flex-wrap" style="margin-top: -100px; position: relative; z-index: 10;">
         <!-- Sidebar (Visible only on large screens) -->
-        <aside class="hidden md:block w-1/4 bg-white p-6 rounded-md shadow-md mb-8 mt-7">
+        <aside class="hidden md:block w-1/4 bg-white p-6 rounded-sm shadow-md mb-8 mt-7">
             <div id="categories-container-sidebar" class="space-y-2">
                 <!-- Categories and posts will be dynamically inserted here -->
             </div>
@@ -270,7 +259,7 @@
             const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
             postsContainer.innerHTML = paginatedPosts.map(post => `
-        <article class="bg-white p-6 shadow-md mb-6 relative m-1 flex flex-col md:flex-row rounded-md">
+        <article class="bg-white p-6 shadow-md mb-6 relative m-1 flex flex-col md:flex-row rounded-sm">
             <div class="flex items-center w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
     <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded" style="max-height: 140px;">
 </div>

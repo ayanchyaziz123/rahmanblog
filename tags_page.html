@@ -125,29 +125,27 @@
 
 <body class="bg-gray-100">
     <!-- Navbar -->
-    <nav class="bg-gray-900 text-white p-4">
+     <!-- Navbar -->
+     <nav class="bg-white text-gray-800 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-xl font-bold font-roboto">
-                <a href="index.html" class="hover:underline hover:text-blue-400 transition duration-300 ease-in-out">
-                    RAHMAN<span class="text-blue-500">BLOG</span>
-                </a>
+            <div class="text-xl font-bold">
+                <a href="index.html" class="hover:underline text-blue-600 transition duration-300 ease-in-out">RAHMANBLOG</a>
             </div>
-            
-            <!-- Desktop Menu -->
-         
-                <div class="hidden md:flex">
-                    <a href="myInfo.html" class="hover:text-gray-400 mx-2">My Info</a>
-                    <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Top 100 Interview Questions</a>
-                </div>
-                <div class="flex md:hidden">
-                    <a href="myInfo.html" class="hover:text-gray-400 mx-2">My Info</a>
-                    <a href="interview_questions.html" class="hover:text-gray-400 mx-2">Interview Q</a>
-                </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="interview_questions.html" class="hover:text-blue-500">Top 100 Interview Questions</a>
+                <a href="myInfo.html" class="hover:text-blue-500">My Info</a>
+            </div>
             <div class="flex md:hidden">
-                <button id="menu-toggle" class="text-white text-2xl">
-                    &#9776;
-                </button>
+                <a href="myInfo.html" class="hover:text-gray-400 mx-2 hover:text-gray-400">My Info</a>
+                <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2"> Interview Q?</a>
             </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-800 text-2xl">&#9776;</button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md rounded-md mt-2">
+            <a href="myInfo.html" class="block py-2 px-4 hover:bg-gray-100">My Info</a>
+            <a href="interview_questions.html" class="block py-2 px-4 hover:bg-gray-100">Top Interview Questions</a>
         </div>
     </nav>
 

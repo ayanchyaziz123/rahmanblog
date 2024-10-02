@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Structures Overview</title>
+  <title>LeetCode Subset Problem Solution</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -30,95 +30,89 @@
       margin: 0;
       overflow-x: auto;
     }
+
+    .recursion-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
-<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">What is a Data Structure?</h1>
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">LeetCode Subset Problem: Efficient Recursion Solution</h1>
+
 <p style="font-size: 18px; margin-bottom: 15px;">
-    A data structure is a specialized format for organizing, processing, retrieving, and storing data. In computer science, efficient data structures are key to designing efficient algorithms. Different kinds of data structures are suited to different kinds of applications, and some are highly specialized to specific tasks.
+    In this blog post, we will walk through solving the LeetCode subset problem using recursion and the "include/exclude" method. This approach provides a clear, efficient way to generate all possible subsets of an array.
 </p>
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Types of Data Structures</h2>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Problem Statement</h2>
 <p style="font-size: 18px; margin-bottom: 15px;">
-    Data structures can be broadly classified into two categories:
+    Given a list of distinct integers, return all possible subsets (the power set). The solution should contain no duplicate subsets, and the order of the subsets does not matter.
 </p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Approach: Recursion (Include/Exclude)</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    We can use recursion to solve this problem. At each recursive step, we make a decision to either <strong>include</strong> or <strong>exclude</strong> the current element. This decision-making process can be visualized using a recursion tree, where each node represents a recursive call.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Code Implementation</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Below is the Python code for solving the subset problem using the "include/exclude" recursion method. The helper function `solve` is called recursively to explore all possible subsets of the input array <code>nums</code>.
+</p>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Python Code</h3>
+  <pre><code>from typing import List
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        
+        # Recursive function to explore subsets
+        def solve(ind, arr):
+            # If we have processed all elements, add the subset to the result
+            if ind == len(nums):
+                res.append(arr.copy())
+                return
+            
+            # Include the current element
+            arr.append(nums[ind])
+            solve(ind + 1, arr)
+            
+            # Exclude the current element (backtrack)
+            arr.pop()
+            solve(ind + 1, arr)
+        
+        solve(0, [])
+        return res
+
+# Example usage
+nums = [1, 2, 3]
+solution = Solution()
+print(solution.subsets(nums))
+  </code></pre>
+</div>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Explanation</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    In the above code, the function <code>solve</code> is responsible for generating subsets. Here's a step-by-step breakdown of how the recursion works:
+</p>
+
 <ul style="font-size: 18px; margin-bottom: 20px;">
-    <li><strong>Linear Data Structures:</strong> These are data structures where data elements are arranged sequentially or linearly, where each element is attached to its previous and next adjacent elements. Examples include arrays, linked lists, stacks, and queues.</li>
-    <li><strong>Non-linear Data Structures:</strong> In these data structures, data elements are not arranged sequentially. Examples include trees and graphs.</li>
-</ul>
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Why are Data Structures Important?</h2>
-<p style="font-size: 18px; margin-bottom: 15px;">
-    Data structures are crucial because they provide the means to manage large amounts of data efficiently for uses such as large databases and internet indexing services. Typically, efficient data structures are key to designing efficient algorithms. This is because the design of an algorithm is often tightly intertwined with the design of the data structure used to implement it.
-</p>
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Common Data Structures</h2>
-<p style="font-size: 18px; margin-bottom: 15px;">
-    Some commonly used data structures include:
-</p>
-<ul style="font-size: 18px; margin-bottom: 20px;">
-    <li><strong>Array:</strong> A collection of elements identified by index or key.</li>
-    <li><strong>Linked List:</strong> A linear collection of data elements where the linear order is not given by their physical placement in memory.</li>
-    <li><strong>Stack:</strong> A collection of elements that are accessible in a last in, first out (LIFO) order.</li>
-    <li><strong>Queue:</strong> A collection of elements that are accessible in a first in, first out (FIFO) order.</li>
-    <li><strong>Tree:</strong> A hierarchical data structure consisting of nodes, with a root node and child nodes, forming a parent-child relationship.</li>
-    <li><strong>Graph:</strong> A collection of nodes where some pairs of nodes are connected by edges, representing relationships between them.</li>
+    <li>We start by calling <code>solve(0, [])</code>, where <code>0</code> is the current index in the array, and <code>[]</code> is the subset we are currently building.</li>
+    <li>At each step, we make two choices: either include <code>nums[ind]</code> in the subset or exclude it.</li>
+    <li>When <code>ind</code> reaches the length of the array, we add the current subset to the result list <code>res</code>.</li>
+    <li>We use the <code>arr.pop()</code> operation to backtrack after exploring a branch where the element is included, allowing us to explore the branch where it is excluded.</li>
 </ul>
 
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Array in Python</h3>
-  <pre><code># Python code to create an array
-array = [1, 2, 3, 4, 5]
-print("Array:", array)
-  </code></pre>
-</div>
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Time Complexity</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The time complexity of this approach is <strong>O(2<sup>n</sup>)</strong>, where <strong>n</strong> is the number of elements in the input array. This is because for every element, we have two choices—either include or exclude it—leading to <strong>2<sup>n</sup></strong> subsets.
+</p>
 
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Stack in Python</h3>
-  <pre><code># Python code to implement a stack
-class Stack:
-    def __init__(self):
-        self.stack = []
-    
-    def push(self, value):
-        self.stack.append(value)
-    
-    def pop(self):
-        if not self.is_empty():
-            return self.stack.pop()
-        return None
-    
-    def is_empty(self):
-        return len(self.stack) == 0
-
-stack = Stack()
-stack.push(1)
-stack.push(2)
-print("Stack after pushes:", stack.stack)
-stack.pop()
-print("Stack after pop:", stack.stack)
-  </code></pre>
-</div>
-
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Binary Tree in Python</h3>
-  <pre><code># Python code to create a binary tree node
-class TreeNode:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-
-print("Root node value:", root.value)
-print("Left child value:", root.left.value)
-print("Right child value:", root.right.value)
-  </code></pre>
-</div>
-
-<p style="font-size: 18px;">
-    Understanding and implementing data structures correctly is crucial for developing efficient software and systems.
+<p style="font-size: 18px; margin-bottom: 15px;">
+    This recursive solution is not only simple and elegant but also efficient for generating all subsets of a small array.
 </p>
 
 </body>

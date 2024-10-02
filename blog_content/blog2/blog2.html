@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Data Types</title>
+  <title>Permutations Using Include-Exclude Approach</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9fafb;
       color: #1f2937;
-     
-    } 
+    }
 
     h1, h2 {
       color: #1f2937;
@@ -36,61 +34,94 @@
 </head>
 <body>
 
-<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">Understanding Data Types</h1>
-<p style="font-size: 18px; margin-bottom: 15px;">
-    Data types are an essential concept in programming that dictate what kind of data can be stored and manipulated within a program. They play a crucial role in ensuring that operations are performed correctly and efficiently. In this post, we will explore various data types and provide examples in different programming languages.
-</p>
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Primitive Data Types</h2>
-<p style="font-size: 18px; margin-bottom: 15px;">
-    Primitive data types are the most basic data types and include integers, floating-point numbers, characters, and booleans. These types are built into most programming languages.
-</p>
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Primitive Data Types in Python</h3>
-  <pre><code># Python code to demonstrate primitive data types
-integer_value = 10
-float_value = 3.14
-char_value = 'A'
-boolean_value = True
+<h1 style="font-size: 28px; color: #1f2937; margin-bottom: 20px;">Permutations: Include-Exclude Approach</h1>
 
-print("Integer:", integer_value)
-print("Float:", float_value)
-print("Character:", char_value)
-print("Boolean:", boolean_value)
+<p style="font-size: 18px; margin-bottom: 15px;">
+    In this blog post, we'll solve the problem of generating all permutations of a list of distinct integers using the **include-exclude** approach. This method builds the permutations by progressively adding elements and backtracking when necessary.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Problem Statement</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Given a list of distinct integers, the goal is to generate all possible permutations of the list. The order of the permutations in the output does not matter, and each permutation must be unique.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Approach: Include-Exclude</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The include-exclude approach involves recursively constructing permutations by including or excluding elements from the original list. At each step, we either choose to include an element in the current permutation or move on without it. This way, we explore all possible permutations.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Code Implementation</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The following code implements the include-exclude approach to generate permutations. We use a helper function to recursively build the permutations by adding elements one at a time.
+</p>
+
+<div class="code-container">
+  <h3 style="font-size: 20px; margin-bottom: 10px;">Python Code</h3>
+  <pre><code>from typing import List
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def backtrack(path, remaining):
+            # If there are no more elements left, add the current path to the result
+            if not remaining:
+                res.append(path.copy())
+                return
+
+            # Try including each element in the current path
+            for i in range(len(remaining)):
+                # Choose the current element to include
+                path.append(remaining[i])
+                # Exclude the chosen element and continue building
+                backtrack(path, remaining[:i] + remaining[i+1:])
+                # Backtrack by removing the last element (Exclude step)
+                path.pop()
+
+        # Start the recursion with an empty path and the full list of numbers
+        backtrack([], nums)
+        return res
+
+# Example usage
+nums = [1, 2, 3]
+solution = Solution()
+print(solution.permute(nums))
   </code></pre>
 </div>
 
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Composite Data Types</h2>
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Explanation</h2>
 <p style="font-size: 18px; margin-bottom: 15px;">
-    Composite data types are more complex and are created by combining primitive data types. Common examples include arrays, lists, and objects.
-</p>
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: List in Python</h3>
-  <pre><code># Python code to demonstrate a list
-my_list = [1, 2, 3, 4, 5]
-print("List:", my_list)
-  </code></pre>
-</div>
-
-<div class="code-container">
-  <h3 style="font-size: 20px; margin-bottom: 10px;">Example: Object in JavaScript</h3>
-  <pre><code>// JavaScript code to demonstrate an object
-const person = {
-  name: 'John',
-  age: 30,
-  isStudent: false
-};
-
-console.log("Person object:", person);
-  </code></pre>
-</div>
-
-<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Why Data Types Matter</h2>
-<p style="font-size: 18px; margin-bottom: 15px;">
-    Understanding data types is crucial for effective programming. Choosing the appropriate data type can affect the performance and reliability of your code. It also helps in avoiding type-related errors and improving code readability and maintenance.
+    The include-exclude approach can be broken down as follows:
 </p>
 
-<p style="font-size: 18px;">
-    By mastering data types, you lay the foundation for developing robust and efficient software. Practice with various data types and experiment with them in different programming languages to deepen your understanding.
+<ul style="font-size: 18px; margin-bottom: 20px;">
+    <li><strong>Backtracking:</strong> We start with an empty list <code>path</code> and progressively add elements from the <code>nums</code> list to build permutations.</li>
+    <li><strong>Include Step:</strong> At each recursive step, we choose to include one element from the remaining list <code>remaining</code> in the current path.</li>
+    <li><strong>Exclude Step:</strong> After including an element, we call the backtracking function again but exclude the chosen element from the remaining list.</li>
+    <li><strong>Base Case:</strong> If there are no elements left to include (i.e., <code>remaining</code> is empty), we add the current permutation (<code>path</code>) to the result.</li>
+</ul>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Example Walkthrough</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    Let’s walk through an example with <code>nums = [1, 2, 3]</code>:
+</p>
+
+<ol style="font-size: 18px; margin-bottom: 20px;">
+    <li>We start with an empty path: <code>[]</code>, and <code>remaining = [1, 2, 3]</code>.</li>
+    <li>We choose <code>1</code> to include in the path: <code>[1]</code>, and continue with <code>remaining = [2, 3]</code>.</li>
+    <li>Next, we include <code>2</code>: <code>[1, 2]</code>, and continue with <code>remaining = [3]</code>.</li>
+    <li>We include <code>3</code>: <code>[1, 2, 3]</code>. Since no elements are left, this is a valid permutation, and we add it to the result.</li>
+    <li>We backtrack by removing <code>3</code>, and explore including <code>2</code> first, followed by <code>1</code>, and so on, to generate all permutations.</li>
+</ol>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Time Complexity</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The time complexity of this approach is <strong>O(n * n!)</strong>, where <strong>n</strong> is the number of elements in the input list. This is because there are <strong>n!</strong> permutations, and we generate each by adding <strong>n</strong> elements.
+</p>
+
+<h2 style="font-size: 24px; color: #1f2937; margin-bottom: 15px;">Conclusion</h2>
+<p style="font-size: 18px; margin-bottom: 15px;">
+    The include-exclude approach is a powerful way to generate all permutations of a given list of numbers. By using recursion and backtracking, we efficiently explore every possible arrangement of elements while avoiding unnecessary recomputation.
 </p>
 
 </body>

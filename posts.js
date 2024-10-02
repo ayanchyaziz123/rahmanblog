@@ -8,7 +8,7 @@ const posts = [
         link: 'fullpost.html?id=1', 
         category: 'Backtracking', 
         contentPath: 'blog_content/blog1/blog1.html',
-        summary: 'An overview of what data structures are, their importance, and basic types used in computer science.',
+        summary: 'An overview of Subset generating by using leetcode problem',
         image: 'blog_content/blog1/blog1_image.png',
         tags: ['Data Structures', 'Basics']
     },
@@ -180,14 +180,14 @@ const posts = [
         tags: ['OOP']
     },
     {
-        id: 18,
-        title: 'Dijkstra’s Algorithm: Finding the Shortest Path',
+        id: 140,
+        title: 'Longest Common Prefix',
         author: 'Rahman',
-        date: 'September 2, 2024',
+        date: 'October 2, 2024',
         link: 'fullpost.html?id=18',
-        category: 'Algorithms',
+        category: 'Trie',
         contentPath: 'blog_content/blog18/blog18.html',
-        summary: 'An in-depth guide to Dijkstra’s Algorithm, including its working principle, implementation in Python, and practical applications for finding the shortest path in graphs.',
+        summary: 'Using trie Data structure how to solve problem, you will learn',
         image: 'blog_content/blog18/blog18_image.png',
         tags: ['Algorithms', 'Shortest Path', 'Priority Queue']
     }

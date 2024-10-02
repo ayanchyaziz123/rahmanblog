@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dijkstra’s Algorithm Explained</title>
+  <title>Longest Common Prefix Explained</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,7 +36,7 @@
     }
 
     .content {
-      padding: 2px;
+      padding: 20px;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -50,97 +50,119 @@
 <body>
 
 <div class="content">
-  <h1 style="font-size: 28px;">Dijkstra’s Algorithm Explained</h1>
+  <h1 style="font-size: 28px;">Longest Common Prefix Explained</h1>
   <p style="font-size: 18px; margin-bottom: 15px;">
-      Dijkstra’s Algorithm is a popular algorithm used for finding the shortest path between nodes in a graph. It is widely used in various applications like GPS navigation, network routing, and more. This blog post will explain how Dijkstra’s Algorithm works, and provide Python code examples to demonstrate its implementation.
+      The Longest Common Prefix problem is a common challenge in algorithm design. It requires finding the longest common starting substring among a set of strings. This problem often appears in coding interviews and helps strengthen your understanding of string manipulation and data structures.
   </p>
 
-  <h2 style="font-size: 24px;">What is Dijkstra’s Algorithm?</h2>
+  <h2 style="font-size: 24px;">What is the Longest Common Prefix?</h2>
   <p style="font-size: 18px; margin-bottom: 15px;">
-      Dijkstra’s Algorithm finds the shortest path from a starting node to all other nodes in a weighted graph with non-negative edge weights. The algorithm maintains a priority queue to explore the closest node and updates the shortest path to each neighboring node iteratively.
+      Given an array of strings, the longest common prefix is the longest substring that is common to all the strings in the array. If there is no common prefix, the function should return an empty string.
   </p>
 
-  <h2 style="font-size: 24px;">How Dijkstra’s Algorithm Works</h2>
+  <h2 style="font-size: 24px;">How to Approach the Problem</h2>
   <p style="font-size: 18px; margin-bottom: 15px;">
-      The algorithm follows these steps:
+      There are various ways to approach this problem, including:
   </p>
   <ul style="font-size: 18px; margin-bottom: 20px;">
-      <li><strong>Initialize:</strong> Set the distance to the starting node to 0 and all other nodes to infinity. Use a priority queue to explore nodes based on their distance.</li>
-      <li><strong>Update Distances:</strong> For the current node, update the distances to its neighboring nodes. If a shorter path is found, update the distance and add the neighbor to the priority queue.</li>
-      <li><strong>Repeat:</strong> Continue exploring nodes until all nodes have been visited or the shortest path to the destination node has been found.</li>
-      <li><strong>Retrieve Path:</strong> Backtrack from the destination node to the starting node to retrieve the shortest path.</li>
+      <li><strong>Vertical scanning:</strong> Compare characters of the strings one by one until a mismatch is found.</li>
+      <li><strong>Horizontal scanning:</strong> Compare each string with the current longest prefix until the longest common prefix is found.</li>
+      <li><strong>Divide and conquer:</strong> Split the array of strings and find the common prefix for each half recursively.</li>
+      <li><strong>Binary search:</strong> Use binary search on the length of the prefix to find the longest common prefix.</li>
+      <li><strong>Trie:</strong> Construct a Trie and find the longest prefix based on the Trie structure.</li>
   </ul>
 
-  <h2 style="font-size: 24px;">Example and Code</h2>
+  <h2 style="font-size: 24px;">Approach 1: Vertical Scanning</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      In the vertical scanning approach, we compare characters of each string in the array at the same index until we find a mismatch. Here's how it works:
+  </p>
 
   <div class="code-container">
-    <h3>Example: Dijkstra’s Algorithm in Python</h3>
-    <pre><code># Python code to implement Dijkstra's Algorithm
-import heapq
+    <h3>Vertical Scanning Implementation in Python</h3>
+    <pre><code># Python code to implement Longest Common Prefix using Vertical Scanning
+class Solution:
+    def longestCommonPrefix(self, strs):
+        if not strs:
+            return ""
+        
+        for i in range(len(strs[0])):
+            for string in strs[1:]:
+                if i >= len(string) or string[i] != strs[0][i]:
+                    return strs[0][:i]
+        return strs[0]
 
-class Graph:
+# Example usage
+sol = Solution()
+strs = ["flower", "flow", "flight"]
+print("Longest Common Prefix (Vertical Scanning):", sol.longestCommonPrefix(strs))  # Output: "fl"
+    </code></pre>
+  </div>
+
+  <h2 style="font-size: 24px;">Approach 2: Using Trie</h2>
+  <p style="font-size: 18px; margin-bottom: 15px;">
+      A Trie, also known as a prefix tree, can efficiently store strings and allows for quick retrieval of common prefixes. Here's how to implement the solution using a Trie:
+  </p>
+
+  <div class="code-container">
+    <h3>Trie Implementation in Python</h3>
+    <pre><code># Python code to implement Longest Common Prefix using Trie
+class TrieNode:
     def __init__(self):
-        self.graph = {}
-        
-    def add_edge(self, u, v, w):
-        if u not in self.graph:
-            self.graph[u] = []
-        if v not in self.graph:
-            self.graph[v] = []
-        self.graph[u].append((v, w))
-        self.graph[v].append((u, w))  # For undirected graph
+        self.children = {}
+        self.is_end = False
 
-    def dijkstra(self, start):
-        # Initialize distances and priority queue
-        distances = {node: float('inf') for node in self.graph}
-        distances[start] = 0
-        priority_queue = [(0, start)]
-        
-        while priority_queue:
-            current_distance, u = heapq.heappop(priority_queue)
-            
-            if current_distance > distances[u]:
-                continue
-            
-            for neighbor, weight in self.graph[u]:
-                distance = current_distance + weight
-                if distance < distances[neighbor]:
-                    distances[neighbor] = distance
-                    heapq.heappush(priority_queue, (distance, neighbor))
-        
-        return distances
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end = True
 
-# Creating a graph and applying Dijkstra's Algorithm
-g = Graph()
-g.add_edge('A', 'B', 1)
-g.add_edge('A', 'C', 4)
-g.add_edge('B', 'C', 2)
-g.add_edge('B', 'D', 5)
-g.add_edge('C', 'D', 1)
+    def longest_common_prefix(self):
+        prefix = ""
+        node = self.root
+        while node and not node.is_end and len(node.children) == 1:
+            char = list(node.children.keys())[0]
+            prefix += char
+            node = node.children[char]
+        return prefix
 
-distances = g.dijkstra('A')
-print("Shortest distances from A:", distances)
+class Solution:
+    def longestCommonPrefix(self, strs):
+        trie = Trie()
+        for string in strs:
+            trie.insert(string)
+        return trie.longest_common_prefix()
+
+# Example usage
+sol = Solution()
+strs = ["flower", "flow", "flight"]
+print("Longest Common Prefix (Trie):", sol.longestCommonPrefix(strs))  # Output: "fl"
     </code></pre>
   </div>
 
   <h2 style="font-size: 24px;">Common Applications</h2>
   <p style="font-size: 18px; margin-bottom: 15px;">
-      Dijkstra’s Algorithm is used in various real-world applications:
+      The Longest Common Prefix problem has various applications, including:
   </p>
   <ul style="font-size: 18px; margin-bottom: 20px;">
-      <li><strong>GPS Navigation:</strong> Finding the shortest route between locations.</li>
-      <li><strong>Network Routing:</strong> Optimizing data packet routing in networks.</li>
-      <li><strong>Pathfinding in Games:</strong> Determining the shortest path for characters.</li>
-      <li><strong>Flight Scheduling:</strong> Finding the shortest path for flights based on travel time.</li>
+      <li><strong>Search Autocompletion:</strong> Determining the common starting characters for suggested search queries.</li>
+      <li><strong>File Management:</strong> Grouping files with common prefixes in their names for efficient file organization.</li>
+      <li><strong>Data Compression:</strong> Identifying common sequences in data to optimize storage and transmission.</li>
   </ul>
 
-  <h2 style="font-size: 24px;">Why Dijkstra’s Algorithm Matters</h2>
+  <h2 style="font-size: 24px;">Conclusion</h2>
   <p style="font-size: 18px; margin-bottom: 15px;">
-      Dijkstra’s Algorithm is fundamental for solving shortest path problems in weighted graphs. Its efficiency and accuracy make it a valuable tool in various fields, from computer science to transportation planning.
+      The Longest Common Prefix problem is a fundamental problem in computer science that helps in understanding string manipulation techniques. Mastering this problem will enhance your coding skills and prepare you for more complex algorithmic challenges.
   </p>
 
   <p style="font-size: 18px;">
-      Mastering Dijkstra’s Algorithm provides a solid foundation for understanding more complex graph algorithms and enhances problem-solving skills in both theoretical and practical scenarios.
+      By applying various techniques, including vertical scanning and the Trie approach, you can find efficient solutions to this problem and improve your problem-solving skills.
   </p>
 </div>
 

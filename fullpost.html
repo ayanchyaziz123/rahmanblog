@@ -89,10 +89,8 @@
             </div>
             <div class="hidden md:flex space-x-4">
                 <a href="interview_questions.html" class="hover:text-blue-500">Top 100 Interview Questions</a>
-                <a href="myInfo.html" class="hover:text-blue-500">My Info</a>
             </div>
             <div class="flex md:hidden">
-                <a href="myInfo.html" class="hover:text-gray-400 mx-2 hover:text-gray-400">My Info</a>
                 <a href="why_astronomy_coding.html" class="hover:text-gray-400 mx-2"> Interview Q?</a>
             </div>
             <div class="md:hidden">
@@ -100,7 +98,6 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md rounded-md mt-2">
-            <a href="myInfo.html" class="block py-2 px-4 hover:bg-gray-100">My Info</a>
             <a href="interview_questions.html" class="block py-2 px-4 hover:bg-gray-100">Top Interview Questions</a>
         </div>
     </nav>
@@ -126,7 +123,7 @@
 
     <!-- Main Content -->
     <main class="w-full md:w-3/4 p-0 md:p-6">
-        <article id="post" class="md:bg-white p-2 md:p-6 ">
+        <article id="post" class="md:bg-white p-0 md:p-6 ">
             <!-- Content will be dynamically inserted here -->
         </article>
     </main>
@@ -278,7 +275,7 @@
             <i class="fas fa-calendar-alt mr-2"></i>${post.date}
         </p>
 
-        <img src="${post.image}" alt="${post.title}" class="w-full h-auto object-cover rounded mb-4" style="max-height: 500px;">
+
         <div id="post-content" class="text-gray-800 leading-relaxed">Loading content...</div>
        
     `;

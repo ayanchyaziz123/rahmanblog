@@ -81,13 +81,13 @@ const posts = [
     },
     { 
         id: 8, 
-        title: 'Graph', 
+        title: 'Climbing Stairs', 
         author: 'Rahman', 
-        date: 'August 25, 2024', 
+        date: 'October 3, 2024', 
         link: 'fullpost.html?id=8', 
-        category: 'Data Structures (Advanced)', 
+        category: 'Dynamic Programming', 
         contentPath: 'blog_content/blog8/blog8.html',
-        summary: 'Understanding graphs, their representations (adjacency matrix, adjacency list), and common algorithms (BFS, DFS).',
+        summary: 'You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?',
         image: 'blog_content/blog8/blog8_image.jpg'
     },
     { 
@@ -184,7 +184,7 @@ const posts = [
         title: 'Longest Common Prefix',
         author: 'Rahman',
         date: 'October 2, 2024',
-        link: 'fullpost.html?id=18',
+        link: 'fullpost.html?id=140',
         category: 'Trie',
         contentPath: 'blog_content/blog18/blog18.html',
         summary: 'Using trie Data structure how to solve problem, you will learn',
